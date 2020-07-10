@@ -1,0 +1,230 @@
+---
+title: "Seminar Paper, Election Research: What is a Conservative Voter in Germany like?"
+author: "Florian Wisniewski"
+date: "5/27/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+##### libraries, if needed
+library(flextable)
+library(ggplot2)
+library(kableExtra)
+library(tidyverse)
+library(tidymodels)
+library(tidyr)
+library(purrr)
+library(rstan)
+library(rstanarm)
+library(stats)
+library(DescTools)
+library(stats)
+library(psych)
+library(vcd)
+library(expss)
+library(rmarkdown)
+library(Amelia)
+library(finalfit)
+library(jtools)
+library(ggstance)
+library(huxtable)
+library(sjlabelled)
+library(sjmisc)
+library(sjPlot)
+library(moderndive)
+library(broom)
+library(pcaPP)
+library(haven)
+library(gdata)
+library(car)
+library(forcats)
+library(MASS)
+library(leaps)
+library(robustfa)
+library(nnet)
+library(brant)
+library(ordinal)
+library(effects)
+library(rockchalk)
+library(performance)
+library(RColorBrewer)
+library(vcd)
+library(pander)
+library(foreign)
+library(glmnet)
+library(randomForest)
+library(ranger)
+library(recipes)
+library(caret)
+```
+
+# Einleitung
+REMEMBER FOOTNOTES
+
+In Zeiten der andauernden, weltweiten wirtschaftlichen und gesellschaftlichen Krisensituation, welche durch das Coronavirus verursacht wurde, ist es nicht verwunderlich, dass viele Menschen sich nach der „Zeit davor“ sehnen: ein wahrgenommener Fortschritt in beinahe allen Bereichen des menschlichen Lebens, verbunden mit der Freiheit, tun zu können was man mochte und wann man dies wünschte. Seien es Reisen, oder aber auch Besuche bei Freunden und Verwandten, in Restaurants oder Bars zu essen und eine gute Zeit mit geliebten Menschen zu verbringen.
+Durch die virale Bedrohungssituation aber ist auch vielen Menschen (wieder) bewusst geworden, dass diese Form des Zusammenlebens, dieser hohe Grad an Freiheit weltweit auch einen hohen Preis haben kann; was im Umkehrschluss bei einigen Menschen das Bedürfnis nach mehr Sicherheit im Zusammenleben miteinander gestärkt hat. Am besten zu beobachten ist dies wohl daran, dass aktuell beinahe jeder Mensch in Deutschland wie selbstverständlich einen Mund-Nasen-Schutz trägt, sobald er ein Gebäude betritt – ein Bild, das für viele noch vor einem halben Jahr hierzulande unvorstellbar gewesen wäre, kennt man ein solches Verhalten doch meist eher aus dem asiatischen Raum.
+
+Doch nicht nur auf individueller oder gesellschaftlicher Ebene erwiesen sich das Coronavirus und die damit verbundenen Einschränkungen, die ein jeder Mensch auf sich nehmen musste, als höchst transformativ. Auch auf politischer Ebene war ein Wandel zu beobachten, den vor beziehungsweise ohne die Krise wohl selten jemand erwartet hätte: durch sie erlebten konservative Parteien überall in Europa einen Aufschwung bezüglich des Zuspruchs aus der wahlberechtigten Bevölkerung.
+Besonders die vor der Krise stark in die Kritik geratene Union aus CDU und CSU in Deutschland machte in ihren Umfragewerten den Anschein, als täte ihr die Krise ungemein gut. Vergleicht man deren Umfragewerte im Februar 2020, so wurde die Partei von 27% der Befragten als Antwort auf die Sonntagsfrage im ARD-DeutschlandTREND genannt  - als Vergleichswert dient nun der DeutschlandTREND vom Mai 2020: hier erhielt die Union starke 39%, befand sich gar auf einem so hohen Wert wie seit August 2017 nicht mehr. 
+Und auch einzelne, konservative Politiker gewannen durch ihr Krisenmanagement an Einfluss und Zuspruch: Markus Söder galt laut dem DeutschlandTREND für Mai 2020 als der bevorzugte Kanzlerkandidat der Union, was besonders auf dessen stark auf individuelle und gesellschaftliche Sicherheit ausgelegte Maßnahmen zur Eindämmung des Virus in Bayern zurückzuführen ist, welche bei der Bevölkerung offenbar als wirkungsvoll wahrgenommen wurden. 
+
+Doch wirft dieser neuerlich wahrzunehmende „Boom“ konservativer Politik aus wissenschaftlicher Perspektive auch Fragen auf. Das Motiv der Sicherheit, welches von konservativen Parteien immer wieder betont wird, wurde bereits angesprochen. Doch welche Eigenschaften haben konservative Wähler noch? Und welche dieser Eigenschaften beeinflussen sie am meisten bei der Wahlentscheidung für eine konservative Partei? Diesen Fragen soll diese Arbeit mit Hilfe einer Analyse des Datensatzes der Allgemeinen Bevölkerungsumfrage der Sozialwissenschaften von 2018 (nachfolgend ALLBUS 2018 genannt) auf den Grund gehen. Untersucht werden dabei diejenigen Personen, welche für die hypothetische Sonntagsfrage im Datensatz angegeben haben, dass sie für die Union stimmen würden.
+
+# Hauptteil I: Methodik, Hypothesen, Theorie
+
+Zu Anfang dieser Arbeit wird ein kurzer Teil zur Einführung in die Thematik der durchzuführenden Untersuchung stehen, um hintergründige Fragen zu Theorie und Praxis vorab zu klären.
+
+## Definitionen und Klarstellungen
+
+Um sich nun zunächst von theoretischer Seite her dem Thema der konservativen Wähler zu nähern, muss zuerst festgelegt werden, welche Wähler diese Arbeit überhaupt als konservativ bezeichnet.
+Wie bereits in der Einleitung erwähnt wird sich bei der folgenden Analyse auf die Variable wahlabs als abhängige Variable konzentriert werden. Die Fragestellung dieser ist dem Codebuch des ALLBUS 2018 zu entnehmen und ist der Sonntagsfrage aus dem bekannten ARD-DeutschlandTREND sehr ähnlich: „Wenn am nächsten Sonntag Bundestagswahl wäre, welche Partei würden sie dann mit Ihrer ZWEITSTIMME wählen?“.
+Diese Variable wurde nun für die Untersuchung dummycodiert, d. h. dichotomisiert. Kriterium war hierbei, die Wählerschaft in zwei Teile zu spalten: die Wähler, die für eine konservative Partei gestimmt haben auf der einen Seite, die restlichen auf der anderen. Dabei stand die oben bereits aufgeworfene Frage im Raum. Konkretisiert bedeutet diese nun: ist die AfD als selbst proklamierte „bürgerliche“ Partei auch eine konservative Partei, oder wird diese Arbeit nur die Unionsparteien CDU und CSU als potentielle politische Vertreter konservativer Wähler ansehen?
+
+Entschieden wurde sich dabei für letztere Variante. Dass die AfD nicht als konservative Partei angesehen wird, hat vielfältige Gründe, auf die nun nachfolgend in gebotener Kürze eingegangen werden soll.
+Zunächst ist aus der medialen Perspektive in den letzten Monaten und Jahren ein (erneuter) Rechtsruck in der AfD zu beobachten gewesen – besonders personifiziert durch den sogenannten „Flügel“, angeführt durch Björn Höcke (Fraktionsvorsitzender AfD-Landtagsfraktion Thüringen) und Andreas Kalbitz (Fraktionsvorsitzender AfD-Landtagsfraktion Brandenburg; aktuell Verfahren zum Entzug der Parteimitgliedschaft). Trotz der Auflösung dieser innerparteilichen Gruppierung im April/Mai 2020 und des angestrebten Ausschlusses von Funktionären wie Kalbitz ist laut dem Thüringer Verfassungsschutz die Endgültigkeit dieses Beschlusses anzuzweifeln; der Behördenchef Stephan Kramer teilte gar mit, dass es sich dabei um ein bewusstes Täuschungsmanöver handele und die Gruppierung weiterarbeiten würde, nur namentlich und offiziell nicht mehr bestehen würde. 
+Was jedoch noch stärker bei einer Beurteilung der AfD ins Gewicht fällt, ist die Tatsache, dass sich trotz Kenntnis über die „völkisch-nationalen“ Tendenzen im sogenannten „Flügel“ nicht ausreichend von diesem distanziert worden ist. Auch der Soziologe Andreas Kemper spricht in einem Interview mit dem Tagesspiegel dieses Thema der fehlenden Distanzierung mit Blick auf die Auflösung des „Flügels“ an: „Die rechtsextreme Ideologie als Kernbestandteil der AfD wird weiter verbreitet. Wer jetzt annimmt, dass da irgendetwas aufgelöst wird, sitzt einem Fake auf. Das ist bloß ein durchsichtiges Täuschungsmanöver.“ 
+
+Nähert man sich der Thematik der AfD nun auch noch von wissenschaftlich-analytischer Seite, so findet man nur noch mehr Gründe dafür, die Partei nicht als konservativ, sondern als rechtspopulistisch zu sehen. So bezeichnen Niedermayer und Hofrichter mit den Worten des Rechtsextremismusforschers und Politikwissenschaftlers Richard Stöss die AfD als „nationalkonservative Partei mit Brücken zum Rechtsextremismus“ . Ebenso betonen sie die Rolle von Politikern des äußeren rechten Rands in der AfD und nennen als Beispiel erneut Björn Höcke. Zwar sprechen sie der Partei nicht gänzlich konservative Tendenzen ab (etwa beim Familien- und Frauenbild), jedoch überwiegen in vielen Bereichen die sogenannten völkisch-nationalen bis rassistischen Punkte (z. B. im Bereich der Europapolitik oder den Positionen zu Integration und Migration).  Gerade diese Einschätzungen teilt auch die vorliegende Arbeit, weshalb sich aus gutem Grund dagegen entschieden wurde, die AfD als konservative Partei anzusehen.
+
+## Auswahl des ALLBUS 2018 als Datensatz und abhängige Variable
+
+Da nun unter Punkt 1 schon auf Hintergrundüberlegungen theoretischer Natur in Bezug auf den Regressanden eingegangen wurde, soll sich nun auch von etwas praktischerer Seite der Variable wahlabs genähert werden. Weiterhin wird kurz darauf eingegangen, warum sich bei der Wahl des Datensatzes für den ALLBUS 2018 entschieden wurde.
+
+Zunächst also erneut genauer zur Variable wahlabs. Zu diesem Zweck ist es praktisch, die absolute und relative Verteilung der Variable zu untersuchen.
+```{r echo=FALSE}
+## CHECK THIS, ERROR?!
+kableUnivarWahlabs <- kable(fre(allbus18.1$wahlabs, weight = allbus18.1$wghtpew))
+#
+kable_styling(kable_input = kableUnivarWahlabs, bootstrap_options = c("striped", "hover", "condensed"), full_width = F)
+#
+ggplot(data = allbus18.1) +
+  geom_bar(mapping = aes(x=wahlabs)) +
+  ggtitle("Variable 'wahlabs'", subtitle = "Absolute Verteilung")
+```
+Hier kann konstatiert werden, dass 799 Befragte angaben, dass sie für die Union stimmen würden (das entspricht 23% der Befragten), was in dem Fall vorliegender Arbeit gleichbedeutend ist mit der Wahlentscheidung für eine konservative Partei.
+
+Doch soll sich nicht nur auf die einzelnen Variablen im Modell sowie die abhängige Variable wahlabs bezogen werden, sondern es soll nun auch begründet werden, warum vorliegende Arbeit mit dem Datensatz ALLBUS 2018 arbeitet.
+Da das Thema der Arbeit eine Charakterisierung konservativer Wähler sein wird, bot sich der ALLBUS 2018-Datensatz besonders deshalb für die Analyse an, da hier eine Vielzahl politischer, gesellschaftlicher und ökonomischer, aber auch mentalitätsbezogener Faktoren abgefragt werden. Somit konnte davon ausgegangen werden, dass sich mit dieser Datengrundlage ein umfassenderes Bild konservativer Wähler zeichnen ließe, als dies durch die Fokussierung auf nur einen dieser Themenbereiche durch Auswahl eines dementsprechenden Datensatzes möglich gewesen wäre.
+
+## Vorgehensweise und Hypothesengenerierung
+
+Bezüglich der Vorgehensweise bei der Datenanalyse wurde sich für die logistische Regression entschieden, da die abhängigen Variable wahlabs binär codiert ist, d. h. entweder die Observation tritt beim Befragten auf oder nicht.
+Diese Art der Regression soll mit Hilfe der Statistiksoftware R durchgeführt werden. Hierzu wurde die Funktion „glm“ aus dem Package „stats“ auf eine Auswahl von unabhängigen Variablen angewendet, mit der abhängigen Variablen „wahlabs“.
+Wichtig ist es also für diese Arbeit noch, darzustellen, welche Variablen des ALLBUS 2018 in diese Auswahl einbezogen worden sind, um für diese Variablen Hypothesen zu generieren, die die Arbeit dann im Regressionsteil prüfen wird. Das Subset für die Regression beinhaltete folgende Variablen.
+
+_Regressor:_
+-	wahlabs
+_Regressanden:_
+-	eastwest (ERHEBUNGSGEBIET (WOHNGEBIET): WEST – OST)
+-	age (ALTER: BERFRAGTE(R))
+-	inc (BEFR.: NETTOEINKOMMEN (OFFENE + LISTENANGABE))
+-	id02 (SUBJEKTIVE SCHICHTEINSTUFUNG, BEFR.)
+-	va01 (WICHTIGKEIT VON SICHERHEIT)
+-	pn16 (VERBUNDENHEIT ZU DEUTSCHLAND ALS GANZEM)
+-	pt02 (VERTRAUEN: BUNDESVERFASSUNGSGERICHT)
+-	pt03 (VERTRAUEN: BUNDESTAG)
+-	pt08 (VERTRAUEN: JUSTIZ)
+-	pt12 (VERTRAUEN: BUNDESREGIERUNG)
+
+Da vor allem bei den Variablen pt02-pt12 die gleiche Codierung vorliegt und das gleiche Themengebiet umfasst wird, wurde hierfür bei der Datenaufbereitung mittels SPSS der additive Index „Vertrauen in staatliche Institutionen“ gebildet, um zu verhindern, dass sich die pt-Variablen gegenseitig im Modell ins Positive oder Negative bezüglich der Auswirkungen auf wahlabs beeinflussen würden.
+
+In der folgenden Analyse wurde davon ausgegangen, dass es verschiedene Faktoren gibt, die die Wahlentscheidung für oder gegen eine konservative Partei in Deutschland in unterschiedlicher Weise beeinflussen. So wurde davon ausgegangen, dass ein konservativer Wähler zufrieden mit den staatlichen Institutionen ist und deshalb ein hohes Vertrauen in diese aufweist, weshalb der additive Index staatl ins Modell aufgenommen wurde. Auf einer abstrakteren Ebene wird diese Annahme auch durch die Verbundenheit zu Deutschland als Ganzem abgedeckt (pn16).
+Da angenommen werden kann, dass Wähler konservativer Parteien aktuell mit der Entwicklung des Landes und dessen wirtschaftlicher Lage zufrieden sind und diesen Status Quo aufrechterhalten wollen (bereits etymologisch: lat. conservare für erhalten/bewahren), nimmt diese Arbeit ebenso an, dass diese Menschen ein höheres Einkommen aufweisen (inc). Mit dieser Grundprämisse zum Konservatismus geht ebenfalls einher, dass angenommen werden kann, diese Menschen würden sich eher in höheren Bevölkerungsschichten selbst verorten (id02).
+Ein weiteres Motiv für eine konservative Wahlentscheidung ergibt sich aus der traditionellen Konfliktlinie zwischen den Werten Freiheit und Sicherheit. Konservative Wähler würden das Pendel hier, so nimmt diese Arbeit an, eher zu Gunsten der Sicherheit ausschlagen lassen – eine Annahme, die sich durch die Variable va01 widerspiegelt.
+Weiterhin wurden die Variablen _eastwest_ und _age_ aufgenommen, um bei Signifikanz das Profil der konservativen Wählerschaft, das diese Arbeit wünscht zu generieren, weiter zu schärfen.
+
+Nachdem diese Klärung vorgenommen worden ist, ergeben sich folgende, zu prüfende Hypothese:
+
+H1a: Befragte, die eher im Westen Deutschlands leben, stimmen eher für eine konservative Partei.
+H0a: Befragte, die eher im Westen Deutschlands leben, stimmen eher nicht für eine konservative Partei.
+H1b: Ältere Befragte stimmen eher für eine konservative Partei.
+H0b: Ältere Befragte stimmen eher nicht für eine konservative Partei.
+H1c: Befragte mit höherem Einkommen stimmen eher für eine konservative Partei.
+H0c: Befragte mit höherem Einkommen stimmen eher nicht für eine konservative Partei.
+H1d: Befragte, die sich eher der Oberschicht zuordnen, stimmen eher für eine konservative Partei.
+H0d: Befragte, die sich eher der Oberschicht zuordnen, stimmen eher nicht für eine konservative Partei.
+H1e: Befragte, denen Sicherheit wichtig ist, stimmen eher für eine konservative Partei.
+H0e: Befragte, denen Sicherheit wichtig ist, stimmen eher nicht für eine konservative Partei.
+H1f: Befragte, die eine hohe Verbundenheit zu Deutschland als Ganzem angeben, stimmen eher für eine konservative Partei.
+H0f: Befragte, die eine hohe Verbundenheit zu Deutschland als Ganzem angeben, stimmen eher nicht für eine konservative Partei.
+H1g: Befragte, die einen hohes Vertrauen in staatliche Institutionen aufweisen, stimmen eher für eine konservative Partei.
+H0g: Befragte, die einen hohes Vertrauen in staatliche Institutionen aufweisen, stimmen eher nicht für eine konservative Partei.
+
+## Analyseteil
+<!-- ### Bivariate Analyse: _wahlabs_ und _va01_ -->
+
+<!-- Zunächst soll hier in einem ersten Schritt der Zusammenhang der Variablen age und inc mit wahlabs mittels der dafür geeigneten, statistischen Maßzahlen analysiert werden. -->
+<!-- <!-- Die Skalierung von _wahlabs_ ist hierbei nominal, es liegt keine natürliche Rangordnung zwischen den Ausprägungen der Variablen vor. --> -->
+<!-- <!-- Bezüglich der Skalierung von _age_ muss festgehalten werden, dass es sich um eine metrische bzw. intervall skalierte Variable handelt. Somit kommt als zu berechnender Koeffizient Eta infrage. --> -->
+<!-- Da es sich bei wahlabs um eine nominal skalierte Variable handelt, wurden als Zusammenhangsmaße der Kontingenzkoeffizient, Phi und Cramers V berechnet. Als PRE-Maß wurde zudem Lambda berechnet. -->
+<!-- Zunächst also zu den Werten für _wahlabs_ und _age_. -->
+
+### Logistische Regression
+
+Für die logistische Regression wurde nun das Modell verwendet, welches die oben genannten Variablen beinhaltet. 
+
+```{r}
+## CHECK REF.LEVEL IN wahlabs
+hypomod <- glm(wahlabs~.-wghtpew, data = sub, family = "binomial")
+summary(hypomod)
+anova(hypomod, test = "Chisq")
+VIF(hypomod)
+```
+
+
+## Schlussteil/Snythese/whatever
+
+```{r visual wahlabs}
+ggplot(data = sub) +
+  geom_bar(aes(x=wahlabs, fill=va01, weight = wghtpew), position = "fill") +
+  scale_fill_brewer(palette = "Dark2")
+```
+
+
+```{r}
+ggplot(data = sub) +
+  geom_bar(aes(x=wahlabs, fill=pn16, weight = wghtpew), position = "fill") +
+  scale_fill_brewer(palette = "Dark2")
+```
+
+```{r echo=FALSE}
+ggplot(sub) +
+  geom_boxplot(aes(y = staatl, weight = wghtpew), size = .4) +
+  facet_grid(. ~ wahlabs, margins = FALSE) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1)) +
+  ggtitle("Verteilung auf Antwortkategorien von mp17\nnach Alter und Wohnort in Deutschland")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
