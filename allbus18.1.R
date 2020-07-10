@@ -97,6 +97,33 @@ allbus18.1$wahlabs <- factor(allbus18.1$wahlabs, ordered = F, labels = c("Nicht 
 allbus18.1$wahlabs <- relevel(allbus18.1$wahlabs, ref = "Union")
 contrasts(allbus18.1$wahlabs)
 
+# CREATE linksRechts
+allbus18.1 <- rename(allbus18.1, "linksRechts" = "pa01")
+allbus18.1$linksRechts <- as.numeric(allbus18.1$linksRechts)
+fre(allbus18.1$linksRechts)
+
+# Erstellung add. Index "Bürgerpflichten"
+## Variablen:
+### pe09 (WAHLBETEILIGUNG IST BÜRGERPFLICHT)
+### pe13 (REGELMAESSIG UEBER POLITIK INFORMIEREN)
+
+allbus18.1$pe09 <- as.numeric(allbus18.1$pe09)
+fre(allbus18.1$pe09)
+class(allbus18.1$pe09)
+pe09 <- allbus18.1$pe09
+#
+allbus18.1$pe13 <- as.numeric(allbus18.1$pe13)
+fre(allbus18.1$pe13)
+class(allbus18.1$pe13)
+pe13 <- allbus18.1$pe13
+#
+
+## Index:
+buergerpfl <- (pe09 + pe13)
+allbus18.1$buergerpfl <- buergerpfl
+fre(allbus18.1$buergerpfl)
+class(allbus18.1$buergerpfl)
+
 # RELABEL IMPORTANT VARIABLES
 allbus18.1$eastwest <- factor(allbus18.1$eastwest, labels = c("West", "Ost"))
 allbus18.1$eastwest <- relevel(allbus18.1$eastwest, ref = "West")
@@ -247,7 +274,8 @@ save(allbus18.1, file = "allbus181.RData")
 ###################################################
 
 # GETTING NEW SUBSET FOR ANALYSES
-sub <- subset(allbus18.1, select = c("wahlabs", "eastwest", "sex", "age", "inc", "id02", "va01", "staatl", "heimat", "wghtpew"))
+sub <- subset(allbus18.1, select = c("wahlabs", "eastwest", "sex", "age", "inc", "id02",
+                                     "va01", "staatl", "heimat", "linksRechts", "buergerpfl", "wghtpew"))
 sub <- as_tibble(sub)
 
 # NA TREATMENT
@@ -262,7 +290,6 @@ save(sub, file = "sub.RData")
 fre(sub$staatl)
 ggplot(sub)+
   geom_histogram(aes(x=staatl), binwidth = 1)
-
 
 
 

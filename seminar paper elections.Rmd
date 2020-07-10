@@ -119,17 +119,27 @@ _Regressor:_
 -	wahlabs
 _Regressanden:_
 -	eastwest (ERHEBUNGSGEBIET (WOHNGEBIET): WEST – OST)
+- sex (GESCHLECHT: BEFRAGTE(R))
 -	age (ALTER: BERFRAGTE(R))
 -	inc (BEFR.: NETTOEINKOMMEN (OFFENE + LISTENANGABE))
+- linksRechts (LINKS-RECHTS-SELBSTEINSTUFUNG, BEFR.)
 -	id02 (SUBJEKTIVE SCHICHTEINSTUFUNG, BEFR.)
 -	va01 (WICHTIGKEIT VON SICHERHEIT)
+
+- pn12 (VERBUNDENHEIT ZUR GEMEINDE)
 -	pn16 (VERBUNDENHEIT ZU DEUTSCHLAND ALS GANZEM)
+- ==> heimat
+- pe09 (WAHLBETEILIGUNG IST BUERGERPFLICHT)
+- pe13 (REGELMAESSIG UEBER POLITIK INFORMIEREN)
+- ==> buergerpfl
 -	pt02 (VERTRAUEN: BUNDESVERFASSUNGSGERICHT)
 -	pt03 (VERTRAUEN: BUNDESTAG)
 -	pt08 (VERTRAUEN: JUSTIZ)
 -	pt12 (VERTRAUEN: BUNDESREGIERUNG)
+- ==> staatl
 
 Da vor allem bei den Variablen pt02-pt12 die gleiche Codierung vorliegt und das gleiche Themengebiet umfasst wird, wurde hierfür bei der Datenaufbereitung mittels SPSS der additive Index „Vertrauen in staatliche Institutionen“ gebildet, um zu verhindern, dass sich die pt-Variablen gegenseitig im Modell ins Positive oder Negative bezüglich der Auswirkungen auf wahlabs beeinflussen würden.
+Das gleiche Verfahren wurde für pn12 und pn16 angewendet, um den Index "Heimatverbundenheit" zu erstellen.
 
 In der folgenden Analyse wurde davon ausgegangen, dass es verschiedene Faktoren gibt, die die Wahlentscheidung für oder gegen eine konservative Partei in Deutschland in unterschiedlicher Weise beeinflussen. So wurde davon ausgegangen, dass ein konservativer Wähler zufrieden mit den staatlichen Institutionen ist und deshalb ein hohes Vertrauen in diese aufweist, weshalb der additive Index staatl ins Modell aufgenommen wurde. Auf einer abstrakteren Ebene wird diese Annahme auch durch die Verbundenheit zu Deutschland als Ganzem abgedeckt (pn16).
 Da angenommen werden kann, dass Wähler konservativer Parteien aktuell mit der Entwicklung des Landes und dessen wirtschaftlicher Lage zufrieden sind und diesen Status Quo aufrechterhalten wollen (bereits etymologisch: lat. conservare für erhalten/bewahren), nimmt diese Arbeit ebenso an, dass diese Menschen ein höheres Einkommen aufweisen (inc). Mit dieser Grundprämisse zum Konservatismus geht ebenfalls einher, dass angenommen werden kann, diese Menschen würden sich eher in höheren Bevölkerungsschichten selbst verorten (id02).
@@ -171,8 +181,10 @@ Für die logistische Regression wurde nun das Modell verwendet, welches die oben
 hypomod <- glm(wahlabs~.-wghtpew, data = sub, family = "binomial")
 summary(hypomod)
 anova(hypomod, test = "Chisq")
-VIF(hypomod)
 ```
+
+Anhand der Ergebnisse aus der ANOVA lässt sich nun ablesen, welche Variablen signifikant sind (d. h. für welche die H1 beibehalten werden darf) und welche nicht. Bei Nicht-Signifikanz einer Variablen wird in dieser Arbeit die H0 angenommen und H1 verworfen.
+
 
 
 ## Schlussteil/Snythese/whatever
@@ -185,9 +197,7 @@ ggplot(data = sub) +
 
 
 ```{r}
-ggplot(data = sub) +
-  geom_bar(aes(x=wahlabs, fill=pn16, weight = wghtpew), position = "fill") +
-  scale_fill_brewer(palette = "Dark2")
+plot(Effect(focal.predictors = "heimat", mod = hypomod))
 ```
 
 ```{r echo=FALSE}
@@ -198,6 +208,9 @@ ggplot(sub) +
   ggtitle("Verteilung auf Antwortkategorien von mp17\nnach Alter und Wohnort in Deutschland")
 ```
 
+```{r}
+plot(Effect(focal.predictors = "staatl", mod = hypomod))
+```
 
 
 
