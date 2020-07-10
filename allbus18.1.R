@@ -82,6 +82,7 @@ library(randomForest)
 library(ranger)
 library(recipes)
 library(caret)
+library(rms)
 
 ###################################################
 

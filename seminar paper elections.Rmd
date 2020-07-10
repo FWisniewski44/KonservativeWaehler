@@ -58,6 +58,7 @@ library(randomForest)
 library(ranger)
 library(recipes)
 library(caret)
+library(rms)
 ```
 
 # Einleitung
@@ -153,7 +154,7 @@ H1g: Befragte, die einen hohes Vertrauen in staatliche Institutionen aufweisen, 
 H0g: Befragte, die einen hohes Vertrauen in staatliche Institutionen aufweisen, stimmen eher nicht für eine konservative Partei.
 
 ## Analyseteil
-<!-- ### Bivariate Analyse: _wahlabs_ und _va01_ -->
+<!-- ### Bivariate Analyse: _wahlabs_ und _age_ -->
 
 <!-- Zunächst soll hier in einem ersten Schritt der Zusammenhang der Variablen age und inc mit wahlabs mittels der dafür geeigneten, statistischen Maßzahlen analysiert werden. -->
 <!-- <!-- Die Skalierung von _wahlabs_ ist hierbei nominal, es liegt keine natürliche Rangordnung zwischen den Ausprägungen der Variablen vor. --> -->
