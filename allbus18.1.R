@@ -97,6 +97,9 @@ allbus18.1$wahlabs <- factor(allbus18.1$wahlabs, ordered = F, labels = c("Nicht 
 allbus18.1$wahlabs <- relevel(allbus18.1$wahlabs, ref = "Union")
 contrasts(allbus18.1$wahlabs)
 
+# DEPENDENT AS NUMERIC???
+allbus18.1$wahlabs <- as.numeric(allbus18.1$wahlabs)
+
 # CREATE linksRechts
 allbus18.1 <- rename(allbus18.1, "linksRechts" = "pa01")
 allbus18.1$linksRechts <- as.numeric(allbus18.1$linksRechts)
