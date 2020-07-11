@@ -177,8 +177,8 @@ H0g: Befragte, die einen hohes Vertrauen in staatliche Institutionen aufweisen, 
 Für die logistische Regression wurde nun das Modell verwendet, welches die oben genannten Variablen beinhaltet. 
 
 ```{r}
-## CHECK REF.LEVEL IN wahlabs???
-hypomod <- glm(wahlabs~.-wghtpew, data = sub, family = "binomial")
+## CHECK REF.LEVEL IN wahl --> mit ifelse aus allbus18.1 funktioniert es endlich auch m. factor!
+hypomod <- glm(wahl~.-wghtpew, data = sub, family = "binomial")
 summary(hypomod)
 anova(hypomod, test = "Chisq")
 ```
@@ -203,7 +203,7 @@ plot(Effect(focal.predictors = "heimat", mod = hypomod))
 ```{r echo=FALSE}
 ggplot(sub) +
   geom_boxplot(aes(y = staatl, weight = wghtpew), size = .4) +
-  facet_grid(. ~ wahlabs, margins = FALSE) +
+  facet_grid(. ~ wahl, margins = FALSE) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1)) +
   ggtitle("Verteilung auf Antwortkategorien von mp17\nnach Alter und Wohnort in Deutschland")
 ```
