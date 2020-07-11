@@ -220,6 +220,9 @@ plot(Effect(focal.predictors = "va01", mod = hypomod))
 plot(Effect(focal.predictors = "linksRechts", mod = hypomod))
 ```
 
+```{r}
+plot(Effect(focal.predictors = "age", mod = hypomod))
+```
 
 
 
