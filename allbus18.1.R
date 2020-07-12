@@ -103,6 +103,11 @@ fre(allbus18.1$wahl)
 allbus18.1$wahl <- ifelse(allbus18.1$wahl == "1", 1, 0)
 allbus18.1$wahl <- factor(allbus18.1$wahl, levels = c(0, 1))
 
+# labels?
+allbus18.1$wahl <- factor(allbus18.1$wahl, levels = c(0, 1), labels = c("NICHT KONSERVATIV", "KONSERVATIV"))
+# check: should work!
+# contrasts(allbus18.1$wahl)
+
 # allbus18.1$wahlabs <- factor(allbus18.1$wahlabs, ordered = F, labels = c("Nicht Union", "Union"))
 # allbus18.1$wahlabs <- relevel(allbus18.1$wahlabs, ref = "Union")
 # contrasts(allbus18.1$wahlabs)
@@ -300,11 +305,8 @@ sub <- na.omit(sub)
 # SAVE sub
 save(sub, file = "sub.RData")
 
-################################################### tests
+################################################### END
 
-fre(sub$staatl)
-ggplot(sub)+
-  geom_histogram(aes(x=staatl), binwidth = 1)
 
 
 

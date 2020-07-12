@@ -96,13 +96,13 @@ Da nun unter Punkt 1 schon auf Hintergrundüberlegungen theoretischer Natur in B
 Zunächst also erneut genauer zur Variable wahlabs. Zu diesem Zweck ist es praktisch, die absolute und relative Verteilung der Variable zu untersuchen.
 ```{r echo=FALSE}
 ## CHECK THIS, ERROR?!
-kableUnivarWahlabs <- kable(fre(allbus18.1$wahlabs, weight = allbus18.1$wghtpew))
+kableUnivarWahlabs <- kable(fre(allbus18$wahl, weight = allbus18$wghtpew))
 #
 kable_styling(kable_input = kableUnivarWahlabs, bootstrap_options = c("striped", "hover", "condensed"), full_width = F)
 #
-ggplot(data = allbus18.1) +
-  geom_bar(mapping = aes(x=wahlabs)) +
-  ggtitle("Variable 'wahlabs'", subtitle = "Absolute Verteilung")
+ggplot(data = allbus18) +
+  geom_bar(mapping = aes(x=wahl)) +
+  ggtitle("Variable 'wahl'", subtitle = "Absolute Verteilung")
 ```
 Hier kann konstatiert werden, dass 799 Befragte angaben, dass sie für die Union stimmen würden (das entspricht 23% der Befragten), was in dem Fall vorliegender Arbeit gleichbedeutend ist mit der Wahlentscheidung für eine konservative Partei.
 
@@ -116,7 +116,8 @@ Diese Art der Regression soll mit Hilfe der Statistiksoftware R durchgeführt we
 Wichtig ist es also für diese Arbeit noch, darzustellen, welche Variablen des ALLBUS 2018 in diese Auswahl einbezogen worden sind, um für diese Variablen Hypothesen zu generieren, die die Arbeit dann im Regressionsteil prüfen wird. Das Subset für die Regression beinhaltete folgende Variablen.
 
 _Regressor:_
--	wahlabs
+-	wahl (BEFRAGTER: WAHLABSICHT BUNDESTAGSWAHL)
+  - Variable wurde dichotomisiert für die Regression
 _Regressanden:_
 -	eastwest (ERHEBUNGSGEBIET (WOHNGEBIET): WEST – OST)
 - sex (GESCHLECHT: BEFRAGTE(R))
@@ -172,57 +173,73 @@ H0g: Befragte, die einen hohes Vertrauen in staatliche Institutionen aufweisen, 
 <!-- Da es sich bei wahlabs um eine nominal skalierte Variable handelt, wurden als Zusammenhangsmaße der Kontingenzkoeffizient, Phi und Cramers V berechnet. Als PRE-Maß wurde zudem Lambda berechnet. -->
 <!-- Zunächst also zu den Werten für _wahlabs_ und _age_. -->
 
+```{r visual wahlabs, echo=FALSE}
+ggplot(data = sub) +
+  geom_bar(aes(x=wahl, fill=va01, weight = wghtpew), position = "fill") +
+  scale_fill_brewer(palette = "Dark2")
+```
+
+```{r staatlichkeitsindex nach wohnort, echo=FALSE}
+ggplot(sub) +
+  geom_boxplot(aes(y = staatl, weight = wghtpew), size = .4) +
+  facet_grid(. ~ wahl, margins = FALSE) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1)) +
+  ggtitle("Verteilung auf Antwortkategorien von mp17\nnach Wohnort in Deutschland")
+```
+
 ### Logistische Regression
 
 Für die logistische Regression wurde nun das Modell verwendet, welches die oben genannten Variablen beinhaltet. 
 
-```{r}
-## CHECK REF.LEVEL IN wahl --> mit ifelse aus allbus18.1 funktioniert es endlich auch m. factor!
+```{r REGRESSIONSMODELL, echo=FALSE}
 hypomod <- glm(wahl~.-wghtpew, data = sub, family = "binomial")
 summary(hypomod)
 anova(hypomod, test = "Chisq")
 ```
 
-Anhand der Ergebnisse aus der ANOVA lässt sich nun ablesen, welche Variablen signifikant sind (d. h. für welche die H1 beibehalten werden darf) und welche nicht. Bei Nicht-Signifikanz einer Variablen wird in dieser Arbeit die H0 angenommen und H1 verworfen.
+Anhand der Regressionskoeffizienten und der Ergebnisse aus der ANOVA lässt sich nun ablesen, welche Variablen signifikant sind (d. h. für welche die H1 beibehalten werden darf) und welche nicht. Bei Nicht-Signifikanz einer Variablen wird in dieser Arbeit die H0 angenommen und H1 verworfen.
+
+Unter dem Signifikanzniveau von alpha = 0,05 sind die Variablen va01 und linksRechts, sowie die additiven Indizes staatl und heimat - hier sind also die aufgestellten H1-Hypothesen anzunehmen. Die Variable age befindet sich sehr knapp über dem Signifikanzniveau, jedoch kennzeichnet sie die ANOVA als signifikant. Ebenso besitzt diese Variable ein hohes Erklärungspotential, weshalb diese Arbeit auch für diese Variable die H1 annehmen wird.
+Für eastwest, sex, inc, id02 und den additiven Index buergerpfl wird die H1 jeweils verworfen, da diese sich im Regressionsmodell als nicht signifikant erwiesen haben. Sie haben somit keine Erklärungskraft im Hinblick auf die Wahlabsicht für oder gegen eine konservative Partei. Hier wird die Nullhypothese H0 angenommen.
+
+Somit wird unter der Voraussetzung der binären logistischen Regression auch eine Interpretation der Koeffizienten vorgenommen, um die Richtung des Einflusses und dessen Stärke für die statistisch signifikanten Variablen festzuhalten.
+Begonnen wird mit der Variable age für das Alter des Befragten. Zur Illustration des Effekts der unabhängigen Variable auf die abhängige Variable der Wahlabsicht wurde der Effect Plot ausgewählt.
+```{r effect wahl~age, echo=FALSE}
+## ACHTUNG, SIGNIFIKANZ NICHT GANZ GEGEBEN
+plot(Effect(focal.predictors = "age", mod = hypomod))
+```
+
+Erkennbar wird hier, dass der Standardfehler bei der Vorhersage in Bezug auf die Variable age sehr hoch ist. Gerade in den Randbereichen (sehr junge und sehr alte Befragte) sind weniger Fälle vorhanden, als in der Mitte der x-Achse (also zwischen 40 bis 60 Jahren). Das kann außerdem auch als ein erklärender Faktor dafür angesehen werden, dass das Signifikanzniveau der Variablen age etwas höher als 0,05 liegt. Sehr gut erkennbar wird hierbei aber vor allem, dass die Wahrscheinlichkeit, für eine konservative Partei zu stimmen mit zunehmendem Alter nicht sehr stark, aber doch etwas ansteigt. Der Koeffizient der Variablen aus der Regression (gerundet 0,005) bestätigt dies, sodass folgende Aussage getätigt werden kann:
+_Es existiert ein statistisch (grenzwertig) signifikanter, leicht positiver Zusammenhang zwischen dem Alter einer Person und deren Wahlentscheidung für eine konservative Partei: je älter die Person ist, desto höher ist die Wahrscheinlichkeit, dass sie für eine konservative Partei stimmt._
+
+Auch die Variable va01, welche den Stellenwert von Sicherheit für eine befragte Person erfasst, wies statistische Signifikanz im Regressionsmodell auf. Hier wurde zur Interpretation ebenfalls sowohl ein Effect Plot, als auch der Koeffizient der Variable aus der Regression herangezogen.
+```{r effect wahl~va01, echo=FALSE}
+plot(Effect(focal.predictors = "va01", mod = hypomod))
+```
+
+Aus der Graphik wird ersichtlich, dass die Wahrscheinlichkeit für eine konservative Partei zu stimmen am höchsten ist, wenn eine Person den Wert Sicherheit mit der höchsten möglichen Wichtigkeit versehen hatte. _Je höher also eine Person den Wert Sicherheit einschätzt, desto höher ist auch die Wahrscheinlichkeit, dass diese Person für eine konservative Partei stimmen wird._ Hier bestätigen auch die Regressionskoeffizienten für die jeweiligen Levels von va01 diese Annahme, da diese immer größere negative Werte annehmen, je unwichtiger der Wert Sicherheit für eine Person wird. Somit kann aufgrund der umgekehrten Codierung der Variablen va01 konstatiert werden: _Es existiert ein statistisch signifikanter, leicht negativer Zusammenhang zwischen wie niedrig eine Person den Wert Sicherheit einschätzt und deren Wahlentscheidung für eine konservative Partei: je niedriger die Person den Wert einschätzt, desto niedriger ist auch ihre Wahrscheinlichkeit, eine konservative Partei zu wählen. Oder umgekehrt: je höher sie ihn einschätzt, desto höher ist die Wahrscheinlichkeit, dass sie für eine konservative Partei stimmt._
+
+Weiterhin konnte statistische Signifikanz für den zuvor gebildeten additiven Index zum Vertrauen in staatliche Institutionen im Regressionsmodell und der ANOVA festgestellt werden. Erneut wurden Effect Plot und Regressionskoeffizient interpretiert und der Zusammenhang in natürlicher Sprache konstatiert:
+```{r Effect wahl~staatl, echo=FALSE}
+plot(Effect(focal.predictors = "staatl", mod = hypomod))
+```
 
 
 
 ## Schlussteil/Snythese/whatever
-
-```{r visual wahlabs}
-ggplot(data = sub) +
-  geom_bar(aes(x=wahlabs, fill=va01, weight = wghtpew), position = "fill") +
-  scale_fill_brewer(palette = "Dark2")
-```
 
 
 ```{r}
 plot(Effect(focal.predictors = "heimat", mod = hypomod))
 ```
 
-```{r echo=FALSE}
-ggplot(sub) +
-  geom_boxplot(aes(y = staatl, weight = wghtpew), size = .4) +
-  facet_grid(. ~ wahl, margins = FALSE) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1)) +
-  ggtitle("Verteilung auf Antwortkategorien von mp17\nnach Alter und Wohnort in Deutschland")
-```
 
-```{r}
-plot(Effect(focal.predictors = "staatl", mod = hypomod))
-```
-
-```{r}
-plot(Effect(focal.predictors = "va01", mod = hypomod))
-```
 
 ```{r}
 plot(Effect(focal.predictors = "linksRechts", mod = hypomod))
 ```
 
-```{r}
-plot(Effect(focal.predictors = "age", mod = hypomod))
-```
+
 
 
 

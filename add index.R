@@ -23,11 +23,7 @@ class(allbus18$buergerpfl)
 ## näher Index:
 # allbus18 <- relevel(allbus18$buergerpfl, ref = "2")
 # ref-level unnötig, da numeric/quasi-metrischer index
-
-
-
 ##############################################################################################
-
 
 
 
