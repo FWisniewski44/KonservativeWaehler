@@ -77,7 +77,7 @@ Doch wirft dieser neuerlich wahrzunehmende „Boom“ konservativer Politik aus 
 
 Zu Anfang dieser Arbeit wird ein kurzer Teil zur Einführung in die Thematik der durchzuführenden Untersuchung stehen, um hintergründige Fragen zu Theorie und Praxis vorab zu klären.
 
-## Definitionen und Klarstellungen
+## Definitionen/Klarstellungen
 
 Um sich nun zunächst von theoretischer Seite her dem Thema der konservativen Wähler zu nähern, muss zuerst festgelegt werden, welche Wähler diese Arbeit überhaupt als konservativ bezeichnet.
 Wie bereits in der Einleitung erwähnt wird sich bei der folgenden Analyse auf die Variable wahlabs als abhängige Variable konzentriert werden. Die Fragestellung dieser ist dem Codebuch des ALLBUS 2018 zu entnehmen und ist der Sonntagsfrage aus dem bekannten ARD-DeutschlandTREND sehr ähnlich: „Wenn am nächsten Sonntag Bundestagswahl wäre, welche Partei würden sie dann mit Ihrer ZWEITSTIMME wählen?“.
@@ -89,9 +89,9 @@ Was jedoch noch stärker bei einer Beurteilung der AfD ins Gewicht fällt, ist d
 
 Nähert man sich der Thematik der AfD nun auch noch von wissenschaftlich-analytischer Seite, so findet man nur noch mehr Gründe dafür, die Partei nicht als konservativ, sondern als rechtspopulistisch zu sehen. So bezeichnen Niedermayer und Hofrichter mit den Worten des Rechtsextremismusforschers und Politikwissenschaftlers Richard Stöss die AfD als „nationalkonservative Partei mit Brücken zum Rechtsextremismus“ . Ebenso betonen sie die Rolle von Politikern des äußeren rechten Rands in der AfD und nennen als Beispiel erneut Björn Höcke. Zwar sprechen sie der Partei nicht gänzlich konservative Tendenzen ab (etwa beim Familien- und Frauenbild), jedoch überwiegen in vielen Bereichen die sogenannten völkisch-nationalen bis rassistischen Punkte (z. B. im Bereich der Europapolitik oder den Positionen zu Integration und Migration).  Gerade diese Einschätzungen teilt auch die vorliegende Arbeit, weshalb sich aus gutem Grund dagegen entschieden wurde, die AfD als konservative Partei anzusehen.
 
-## Auswahl des ALLBUS 2018 als Datensatz und abhängige Variable
+## Auswahl des ALLBUS 2018 als Datensatz und univariate Analyse der abhängigen Variable _wahl_
 
-Da nun unter Punkt 1 schon auf Hintergrundüberlegungen theoretischer Natur in Bezug auf den Regressanden eingegangen wurde, soll sich nun auch von etwas praktischerer Seite der Variable wahlabs genähert werden. Weiterhin wird kurz darauf eingegangen, warum sich bei der Wahl des Datensatzes für den ALLBUS 2018 entschieden wurde.
+Da nun unter Punkt 1 schon auf Hintergrundüberlegungen theoretischer Natur in Bezug auf den Regressanden eingegangen wurde, soll sich nun auch von etwas praktischerer Seite der Variable _wahl_ genähert werden. Weiterhin wird kurz darauf eingegangen, warum sich bei der Wahl des Datensatzes für den ALLBUS 2018 entschieden wurde.
 
 Zunächst also erneut genauer zur Variable wahlabs. Zu diesem Zweck ist es praktisch, die absolute und relative Verteilung der Variable zu untersuchen.
 ```{r echo=FALSE}
@@ -145,29 +145,38 @@ Das gleiche Verfahren wurde für pn12 und pn16 angewendet, um den Index "Heimatv
 In der folgenden Analyse wurde davon ausgegangen, dass es verschiedene Faktoren gibt, die die Wahlentscheidung für oder gegen eine konservative Partei in Deutschland in unterschiedlicher Weise beeinflussen. So wurde davon ausgegangen, dass ein konservativer Wähler zufrieden mit den staatlichen Institutionen ist und deshalb ein hohes Vertrauen in diese aufweist, weshalb der additive Index staatl ins Modell aufgenommen wurde. Auf einer abstrakteren Ebene wird diese Annahme auch durch die Verbundenheit zu Deutschland als Ganzem abgedeckt (pn16).
 Da angenommen werden kann, dass Wähler konservativer Parteien aktuell mit der Entwicklung des Landes und dessen wirtschaftlicher Lage zufrieden sind und diesen Status Quo aufrechterhalten wollen (bereits etymologisch: lat. conservare für erhalten/bewahren), nimmt diese Arbeit ebenso an, dass diese Menschen ein höheres Einkommen aufweisen (inc). Mit dieser Grundprämisse zum Konservatismus geht ebenfalls einher, dass angenommen werden kann, diese Menschen würden sich eher in höheren Bevölkerungsschichten selbst verorten (id02).
 Ein weiteres Motiv für eine konservative Wahlentscheidung ergibt sich aus der traditionellen Konfliktlinie zwischen den Werten Freiheit und Sicherheit. Konservative Wähler würden das Pendel hier, so nimmt diese Arbeit an, eher zu Gunsten der Sicherheit ausschlagen lassen – eine Annahme, die sich durch die Variable va01 widerspiegelt.
-Weiterhin wurden die Variablen _eastwest_ und _age_ aufgenommen, um bei Signifikanz das Profil der konservativen Wählerschaft, das diese Arbeit wünscht zu generieren, weiter zu schärfen.
+Weiterhin wurden die Variablen _eastwest_, _sex_ und _age_ aufgenommen, um bei Signifikanz das Profil der konservativen Wählerschaft, das diese Arbeit wünscht zu generieren, weiter zu schärfen.
 
-Nachdem diese Klärung vorgenommen worden ist, ergeben sich folgende, zu prüfende Hypothese:
+Nachdem diese Klärung vorgenommen worden ist, ergeben sich folgende, in der Arbeit zu prüfende Hypothese:
 
 H1a: Befragte, die eher im Westen Deutschlands leben, stimmen eher für eine konservative Partei.
 H0a: Befragte, die eher im Westen Deutschlands leben, stimmen eher nicht für eine konservative Partei.
+
 H1b: Ältere Befragte stimmen eher für eine konservative Partei.
 H0b: Ältere Befragte stimmen eher nicht für eine konservative Partei.
-H1c: Befragte mit höherem Einkommen stimmen eher für eine konservative Partei.
-H0c: Befragte mit höherem Einkommen stimmen eher nicht für eine konservative Partei.
-H1d: Befragte, die sich eher der Oberschicht zuordnen, stimmen eher für eine konservative Partei.
-H0d: Befragte, die sich eher der Oberschicht zuordnen, stimmen eher nicht für eine konservative Partei.
-H1e: Befragte, denen Sicherheit wichtig ist, stimmen eher für eine konservative Partei.
-H0e: Befragte, denen Sicherheit wichtig ist, stimmen eher nicht für eine konservative Partei.
-H1f: Befragte, die eine hohe Verbundenheit zu Deutschland als Ganzem angeben, stimmen eher für eine konservative Partei.
-H0f: Befragte, die eine hohe Verbundenheit zu Deutschland als Ganzem angeben, stimmen eher nicht für eine konservative Partei.
-H1g: Befragte, die einen hohes Vertrauen in staatliche Institutionen aufweisen, stimmen eher für eine konservative Partei.
-H0g: Befragte, die einen hohes Vertrauen in staatliche Institutionen aufweisen, stimmen eher nicht für eine konservative Partei.
 
-## Analyseteil
-<!-- ### Bivariate Analyse: _wahlabs_ und _age_ -->
+H1c: Männer stimmen eher für eine konservative Partei.
+H0c: Männer stimmen eher nicht für eine konservative Partei.
 
-<!-- Zunächst soll hier in einem ersten Schritt der Zusammenhang der Variablen age und inc mit wahlabs mittels der dafür geeigneten, statistischen Maßzahlen analysiert werden. -->
+H1d: Befragte mit höherem Einkommen stimmen eher für eine konservative Partei.
+H0d: Befragte mit höherem Einkommen stimmen eher nicht für eine konservative Partei.
+
+H1e: Befragte, die sich eher der Oberschicht zuordnen, stimmen eher für eine konservative Partei.
+H0e: Befragte, die sich eher der Oberschicht zuordnen, stimmen eher nicht für eine konservative Partei.
+
+H1f: Befragte, denen Sicherheit wichtig ist, stimmen eher für eine konservative Partei.
+H0f: Befragte, denen Sicherheit wichtig ist, stimmen eher nicht für eine konservative Partei.
+
+H1g: Befragte, die eine hohe Verbundenheit zu Deutschland als Ganzem angeben, stimmen eher für eine konservative Partei.
+H0g: Befragte, die eine hohe Verbundenheit zu Deutschland als Ganzem angeben, stimmen eher nicht für eine konservative Partei.
+
+H1h: Befragte, die einen hohes Vertrauen in staatliche Institutionen aufweisen, stimmen eher für eine konservative Partei.
+H0h: Befragte, die einen hohes Vertrauen in staatliche Institutionen aufweisen, stimmen eher nicht für eine konservative Partei.
+
+# Hauptteil II: Analyseteil
+
+### Bivariate Analyse
+Zunächst soll hier in einem ersten analytischen Schritt der Zusammenhang der abhängigen Variable _wahl_ mit einigen Variablen aus dem aufzustellenden Regressionsmodell, von denen sich in dieser Arbeit ein besonderes Erklärungspotential erhofft wird, bivariat näher untersucht werden.
 <!-- <!-- Die Skalierung von _wahlabs_ ist hierbei nominal, es liegt keine natürliche Rangordnung zwischen den Ausprägungen der Variablen vor. --> -->
 <!-- <!-- Bezüglich der Skalierung von _age_ muss festgehalten werden, dass es sich um eine metrische bzw. intervall skalierte Variable handelt. Somit kommt als zu berechnender Koeffizient Eta infrage. --> -->
 <!-- Da es sich bei wahlabs um eine nominal skalierte Variable handelt, wurden als Zusammenhangsmaße der Kontingenzkoeffizient, Phi und Cramers V berechnet. Als PRE-Maß wurde zudem Lambda berechnet. -->
@@ -202,7 +211,9 @@ Anhand der Regressionskoeffizienten und der Ergebnisse aus der ANOVA lässt sich
 Unter dem Signifikanzniveau von alpha = 0,05 sind die Variablen va01 und linksRechts, sowie die additiven Indizes staatl und heimat - hier sind also die aufgestellten H1-Hypothesen anzunehmen. Die Variable age befindet sich sehr knapp über dem Signifikanzniveau, jedoch kennzeichnet sie die ANOVA als signifikant. Ebenso besitzt diese Variable ein hohes Erklärungspotential, weshalb diese Arbeit auch für diese Variable die H1 annehmen wird.
 Für eastwest, sex, inc, id02 und den additiven Index buergerpfl wird die H1 jeweils verworfen, da diese sich im Regressionsmodell als nicht signifikant erwiesen haben. Sie haben somit keine Erklärungskraft im Hinblick auf die Wahlabsicht für oder gegen eine konservative Partei. Hier wird die Nullhypothese H0 angenommen.
 
-Somit wird unter der Voraussetzung der binären logistischen Regression auch eine Interpretation der Koeffizienten vorgenommen, um die Richtung des Einflusses und dessen Stärke für die statistisch signifikanten Variablen festzuhalten.
+Somit wird unter der Voraussetzung der binären logistischen Regression im Folgenden auch eine Interpretation der Koeffizienten vorgenommen, um die Richtung des Einflusses und dessen Stärke für die statistisch signifikanten Variablen festzuhalten.
+
+#### Wahlabsicht und Alter einer Person (age)
 Begonnen wird mit der Variable age für das Alter des Befragten. Zur Illustration des Effekts der unabhängigen Variable auf die abhängige Variable der Wahlabsicht wurde der Effect Plot ausgewählt.
 ```{r effect wahl~age, echo=FALSE}
 ## ACHTUNG, SIGNIFIKANZ NICHT GANZ GEGEBEN
@@ -212,6 +223,7 @@ plot(Effect(focal.predictors = "age", mod = hypomod))
 Erkennbar wird hier, dass der Standardfehler bei der Vorhersage in Bezug auf die Variable age sehr hoch ist. Gerade in den Randbereichen (sehr junge und sehr alte Befragte) sind weniger Fälle vorhanden, als in der Mitte der x-Achse (also zwischen 40 bis 60 Jahren). Das kann außerdem auch als ein erklärender Faktor dafür angesehen werden, dass das Signifikanzniveau der Variablen age etwas höher als 0,05 liegt. Sehr gut erkennbar wird hierbei aber vor allem, dass die Wahrscheinlichkeit, für eine konservative Partei zu stimmen mit zunehmendem Alter nicht sehr stark, aber doch etwas ansteigt. Der Koeffizient der Variablen aus der Regression (gerundet 0,005) bestätigt dies, sodass folgende Aussage getätigt werden kann:
 _Es existiert ein statistisch (grenzwertig) signifikanter, leicht positiver Zusammenhang zwischen dem Alter einer Person und deren Wahlentscheidung für eine konservative Partei: je älter die Person ist, desto höher ist die Wahrscheinlichkeit, dass sie für eine konservative Partei stimmt._
 
+#### Wahlabsicht und Stellenwert von Sicherheit (va01)
 Auch die Variable va01, welche den Stellenwert von Sicherheit für eine befragte Person erfasst, wies statistische Signifikanz im Regressionsmodell auf. Hier wurde zur Interpretation ebenfalls sowohl ein Effect Plot, als auch der Koeffizient der Variable aus der Regression herangezogen.
 ```{r effect wahl~va01, echo=FALSE}
 plot(Effect(focal.predictors = "va01", mod = hypomod))
@@ -219,26 +231,45 @@ plot(Effect(focal.predictors = "va01", mod = hypomod))
 
 Aus der Graphik wird ersichtlich, dass die Wahrscheinlichkeit für eine konservative Partei zu stimmen am höchsten ist, wenn eine Person den Wert Sicherheit mit der höchsten möglichen Wichtigkeit versehen hatte. _Je höher also eine Person den Wert Sicherheit einschätzt, desto höher ist auch die Wahrscheinlichkeit, dass diese Person für eine konservative Partei stimmen wird._ Hier bestätigen auch die Regressionskoeffizienten für die jeweiligen Levels von va01 diese Annahme, da diese immer größere negative Werte annehmen, je unwichtiger der Wert Sicherheit für eine Person wird. Somit kann aufgrund der umgekehrten Codierung der Variablen va01 konstatiert werden: _Es existiert ein statistisch signifikanter, leicht negativer Zusammenhang zwischen wie niedrig eine Person den Wert Sicherheit einschätzt und deren Wahlentscheidung für eine konservative Partei: je niedriger die Person den Wert einschätzt, desto niedriger ist auch ihre Wahrscheinlichkeit, eine konservative Partei zu wählen. Oder umgekehrt: je höher sie ihn einschätzt, desto höher ist die Wahrscheinlichkeit, dass sie für eine konservative Partei stimmt._
 
+#### Wahlabsicht und additiver Index zum Vertrauen in die Staatlichkeit (staatl)
 Weiterhin konnte statistische Signifikanz für den zuvor gebildeten additiven Index zum Vertrauen in staatliche Institutionen im Regressionsmodell und der ANOVA festgestellt werden. Erneut wurden Effect Plot und Regressionskoeffizient interpretiert und der Zusammenhang in natürlicher Sprache konstatiert:
 ```{r Effect wahl~staatl, echo=FALSE}
 plot(Effect(focal.predictors = "staatl", mod = hypomod))
 ```
 
+Der Regressionskoeffizient für den Index (gerundet 0,092) zeigt einen statistisch signifikanten, positiven Zusammenhang mit der abhängigen Variable zur Wahlabsicht der Befragten. Dies wird durch die Graphik ebenfalls sehr anschaulich illustriert: es kann abgelesen werden, dass die Wahrscheinlichkeit dafür, dass eine Person für eine konservative Partei stimmt, ansteigt, je höher deren Wert im additiven Index für das Vertrauen in staatliche Institutionen ist. Höhere Werte in diesem Index bedeuten, um dies noch klarzustellen, ein hohes Vertrauen in die Staatlichkeit. Somit kann folgender Satz aufgestellt werden:
+_Je höher das Vertrauen einer Person in die Staatlichkeit, desto höher ist die Wahrscheinlichkeit, dass diese Person eine konservative Partei wählt._
 
-
-## Schlussteil/Snythese/whatever
-
-
-```{r}
+#### Wahlabsicht und additiver Index zur Heimatverbundenheit (heimat)
+Statistisch signifikant anhand des p-Wertes ist im Modell auch die Variable heimat, welche für den additiven Index zum Thema der Heimatverbundenheit der Befragten steht. _Hohe_ Werte stehen in diesem Index für _wenig_ Heimatverbundenheit, während *niedrige* Werte für eine *hohe* Heimatverbundenheit stehen.
+```{r Effect wahl~heimat, echo=FALSE}
 plot(Effect(focal.predictors = "heimat", mod = hypomod))
 ```
 
+In der Interpretation des zugehörigen Regressionskoeffizienten (-0,138), sowie der zugehörigen Graphik wird deutlich, dass ein statistisch signifikanter, negativer Zusammenhang zwischen der Wahlabsicht einer Person und deren Heimatverbundenheit, gemessen durch den oben beschriebenen additiven Index, besteht.
+In natürlicher Sprache ausgedrückt lautet dieser Zusammenhang wie folgt:
+_Je höher die Heimatverbundenheit einer Person ist, desto höher ist deren Wahrscheinlichkeit, für eine konservative Partei zu stimmen._
 
-
+#### Wahlabsicht und Links-Rechts-Selbsteinstufung (linksRechts)
+Zuletzt soll noch auf die letzte, im Modell signifikante Variable eingegangen werden. Die Variable linksRechts beinhaltet die subjektive Einstufung der Befragten auf der politischen Links-Rechts-Skala, wobei niedrige Werte für "links" stehen, hohe dagegen für "rechts". Der Koeffizient aus der logistischen Regression liegt bei gerundet 0,301.
 ```{r}
 plot(Effect(focal.predictors = "linksRechts", mod = hypomod))
 ```
 
+Hier ist ein statistisch signifikanter, positiver Zusammenhang zwischen der Links-Rechts-Selbsteinstufung einer Person und deren Wahlabsicht zu erkennen.
+Der zugehörige Satz in natürlicher Sprache lautet in diesem Fall:
+_Je weiter rechts sich eine Person einordnet, desto höher ist deren Wahrscheinlichkeit, für eine konservative Partei zu stimmen._
+
+### Verbindung mit Theorien, inhaltliche Interpretation der Ergebnisse
+
+
+# Schlussteil/Snythese/Verbesserungsvorschläge/whatever
+Zum Abschluss vorliegender Arbeit soll zunächst zusammenfassend nochmals auf die aufgestellten Hypothesen eingegangen werden - welche von diesen konnten am Ende angenommen werden, welche mussten nach der durchgeführten Regressionsanalyse verworfen werden?
+
+
+```{r effects for significant vars, echo=FALSE}
+plot(predictorEffects(mod = hypomod, predictors = c("age", "va01", "staatl", "heimat", "linksRechts")))
+```
 
 
 

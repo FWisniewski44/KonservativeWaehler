@@ -142,11 +142,11 @@ fre(allbus18.1$buergerpfl)
 class(allbus18.1$buergerpfl)
 
 # RELABEL IMPORTANT VARIABLES
-allbus18.1$eastwest <- factor(allbus18.1$eastwest, labels = c("West", "Ost"))
-allbus18.1$eastwest <- relevel(allbus18.1$eastwest, ref = "West")
+allbus18.1$eastwest <- factor(allbus18.1$eastwest, labels = c("WEST", "OST"))
+allbus18.1$eastwest <- relevel(allbus18.1$eastwest, ref = "OST")
 
-allbus18.1$sex <- factor(allbus18.1$sex, labels = c("Mann", "Frau"))
-allbus18.1$sex <- relevel(allbus18.1$sex, ref = "Mann")
+allbus18.1$sex <- factor(allbus18.1$sex, labels = c("MANN", "FRAU"))
+allbus18.1$sex <- relevel(allbus18.1$sex, ref = "FRAU")
 
 fre(allbus18.1$agec)
 allbus18.1$agec <- factor(allbus18.1$agec, labels = c("18-29", "30-44", "45-59", "60-74", "75-89", "UEBER 89"))
