@@ -294,16 +294,16 @@ save(allbus18.1, file = "allbus181.RData")
 ###################################################
 
 # GETTING NEW SUBSET FOR ANALYSES
-sub <- subset(allbus18.1, select = c("wahl", "eastwest", "sex", "age", "inc", "id02",
+sub1 <- subset(allbus18.1, select = c("wahl", "eastwest", "sex", "age", "inc", "id02",
                                      "va01", "staatl", "heimat", "linksRechts", "buergerpfl", "wghtpew"))
-sub <- as_tibble(sub)
+sub1 <- as_tibble(sub)
 
 # NA TREATMENT
 missmap(sub)
-sub <- na.omit(sub)
+sub1 <- na.omit(sub)
 
 # SAVE sub
-save(sub, file = "sub.RData")
+save(sub1, file = "sub1.RData")
 
 ################################################### END
 
