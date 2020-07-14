@@ -93,12 +93,27 @@ allbus18.1 <- as_tibble(allbus18.1)
 # DEPENDENT VARIABLE
 names(allbus18.1)[712] <- "wahlabs"
 fre(allbus18.1$wahlabs)
-allbus18.1$wahlabs <- factor(allbus18.1$wahlabs, ordered = F, labels = c("Nicht Union", "Union"))
-allbus18.1$wahlabs <- relevel(allbus18.1$wahlabs, ref = "Union")
-contrasts(allbus18.1$wahlabs)
+
+allbus18.1$pv01 <- factor(allbus18.1$pv01)
+fre(allbus18.1$pv01)
+allbus18.1 <- dplyr::rename(allbus18.1, "wahl" = "pv01")
+fre(allbus18.1$wahl)
+
+# if.else AUF wahl
+allbus18.1$wahl <- ifelse(allbus18.1$wahl == "1", 1, 0)
+allbus18.1$wahl <- factor(allbus18.1$wahl, levels = c(0, 1))
+
+# labels?
+allbus18.1$wahl <- factor(allbus18.1$wahl, levels = c(0, 1), labels = c("NICHT KONSERVATIV", "KONSERVATIV"))
+# check: should work!
+# contrasts(allbus18.1$wahl)
+
+# allbus18.1$wahlabs <- factor(allbus18.1$wahlabs, ordered = F, labels = c("Nicht Union", "Union"))
+# allbus18.1$wahlabs <- relevel(allbus18.1$wahlabs, ref = "Union")
+# contrasts(allbus18.1$wahlabs)
 
 # DEPENDENT AS NUMERIC???
-allbus18.1$wahlabs <- as.numeric(allbus18.1$wahlabs)
+# allbus18.1$wahlabs <- as.numeric(allbus18.1$wahlabs)
 
 # CREATE linksRechts
 allbus18.1 <- rename(allbus18.1, "linksRechts" = "pa01")
@@ -120,19 +135,21 @@ fre(allbus18.1$pe13)
 class(allbus18.1$pe13)
 pe13 <- allbus18.1$pe13
 #
-
-## Index:
+## Index (Versuch mit R):
 buergerpfl <- (pe09 + pe13)
 allbus18.1$buergerpfl <- buergerpfl
 fre(allbus18.1$buergerpfl)
 class(allbus18.1$buergerpfl)
 
 # RELABEL IMPORTANT VARIABLES
-allbus18.1$eastwest <- factor(allbus18.1$eastwest, labels = c("West", "Ost"))
-allbus18.1$eastwest <- relevel(allbus18.1$eastwest, ref = "West")
+allbus18.1$eastwest <- factor(allbus18.1$eastwest, labels = c("WEST", "OST"))
+allbus18.1$eastwest <- relevel(allbus18.1$eastwest, ref = "OST")
 
-allbus18.1$sex <- factor(allbus18.1$sex, labels = c("Mann", "Frau"))
-allbus18.1$sex <- relevel(allbus18.1$sex, ref = "Mann")
+allbus18.1$sex <- factor(allbus18.1$sex, labels = c("MANN", "FRAU"))
+allbus18.1$sex <- relevel(allbus18.1$sex, ref = "FRAU")
+
+fre(allbus18.1$agec)
+allbus18.1$agec <- factor(allbus18.1$agec, labels = c("18-29", "30-44", "45-59", "60-74", "75-89", "UEBER 89"))
 
 allbus18.1$educ <- factor(allbus18.1$educ, labels = c("Ohne Abschluss", "Volks-/Mittelschule",
                                                         "Mittl. Reife", "Fachhochschulreife",
@@ -277,22 +294,19 @@ save(allbus18.1, file = "allbus181.RData")
 ###################################################
 
 # GETTING NEW SUBSET FOR ANALYSES
-sub <- subset(allbus18.1, select = c("wahlabs", "eastwest", "sex", "age", "inc", "id02",
+sub1 <- subset(allbus18.1, select = c("wahl", "eastwest", "sex", "age", "inc", "id02",
                                      "va01", "staatl", "heimat", "linksRechts", "buergerpfl", "wghtpew"))
-sub <- as_tibble(sub)
+sub1 <- as_tibble(sub)
 
 # NA TREATMENT
 missmap(sub)
-sub <- na.omit(sub)
+sub1 <- na.omit(sub)
 
 # SAVE sub
-save(sub, file = "sub.RData")
+save(sub1, file = "sub1.RData")
 
-################################################### tests
+################################################### END
 
-fre(sub$staatl)
-ggplot(sub)+
-  geom_histogram(aes(x=staatl), binwidth = 1)
 
 
 

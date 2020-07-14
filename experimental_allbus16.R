@@ -214,7 +214,6 @@ fre(allbus18$pv01)
 allbus18$pv01 <- relevel(allbus18$pv01, ref = "KONSERVATIV")
 allbus18 <- dplyr::rename(allbus18, "wahl" = "pv01")
 fre(allbus18$wahl)
-contrasts(allbus18$wahl)
 
 # numeric gewichtung
 allbus18$wghtpew <- as.numeric(allbus18$wghtpew)
@@ -231,94 +230,96 @@ allbus18$id02 <- factor(allbus18$id02, labels = c("Unterschicht", "Arbeiterschic
                                                       "Oberschicht"))
 allbus18$id02 <- relevel(allbus18$id02, ref = "Oberschicht")
 
-#
-## Wahlbeteiligung ist Bürgerpflicht
-allbus18.1$pe09 <- factor(allbus18.1$pe09, labels = c("Stimme voll zu", "Stimme eher zu",
-                                                      "Stimme eher nicht zu", "Stimme gar nicht zu"))
-#
-#### allbus18.1$pe09 <- as.numeric(allbus18.1$pe09)
-## Man sollte sich regelmäßig über Politik informieren
-allbus18.1$pe13 <- factor(allbus18.1$pe13, labels = c("Stimme voll zu", "Stimme eher zu",
-                                                      "Stimme eher nicht zu", "Stimme gar nicht zu"))
-#
-#### allbus18.1$pe013 <- as.numeric(allbus18.1$pe13)
-## Pol. Interesse Befragter (Ordinal)
-allbus18.1$pa02a <- factor(allbus18.1$pa02a, labels = c("Sehr stark", "Stark", "Mittel",
-                                                        "Wenig", "Ueberhaupt nicht"))
-#
-#### allbus18.1$pa02a <- as.numeric(allbus18.1$pa02a)
-## Befragter ist stolz aufs Grundgesetz
-allbus18.1$pn01 <- factor(allbus18.1$pn01, labels = c("Keine Aussage", "Stolz auf GG"))
-## Befragter ist stolz auf den Bundestag
-allbus18.1$pn02 <- factor(allbus18.1$pn02, labels = c("Keine Aussage", "Stolz auf BT"))
-## Verbundenheit Befragter zu: Gemeinde
-allbus18.1$pn12 <- factor(allbus18.1$pn12, labels = c("Stark verbunden", "Ziemlich verbunden",
-                                                      "Wenig verbunden", "Gar nicht verbunden"))
-#
-#### allbus18.1$pn12 <- as.numeric(allbus18.1$pn12)
-## Verbundenheit Befragter zu: Gesamtdeutschland
-allbus18.1$pn16 <- factor(allbus18.1$pn16, labels = c("Stark verbunden", "Ziemlich verbunden",
-                                                      "Wenig verbunden", "Gar nicht verbunden"))
-allbus18.1$pn16 <- relevel(allbus18.1$pn16, ref = "Stark verbunden")
-#
-#### allbus18.1$pn16 <- as.numeric(allbus18.1$pn16)
+# #
+# ## Wahlbeteiligung ist Bürgerpflicht
+# allbus18.1$pe09 <- factor(allbus18.1$pe09, labels = c("Stimme voll zu", "Stimme eher zu",
+#                                                       "Stimme eher nicht zu", "Stimme gar nicht zu"))
+# #
+# #### allbus18.1$pe09 <- as.numeric(allbus18.1$pe09)
+# ## Man sollte sich regelmäßig über Politik informieren
+# allbus18.1$pe13 <- factor(allbus18.1$pe13, labels = c("Stimme voll zu", "Stimme eher zu",
+#                                                       "Stimme eher nicht zu", "Stimme gar nicht zu"))
+# #
+# #### allbus18.1$pe013 <- as.numeric(allbus18.1$pe13)
+# ## Pol. Interesse Befragter (Ordinal)
+# allbus18.1$pa02a <- factor(allbus18.1$pa02a, labels = c("Sehr stark", "Stark", "Mittel",
+#                                                         "Wenig", "Ueberhaupt nicht"))
+# #
+# #### allbus18.1$pa02a <- as.numeric(allbus18.1$pa02a)
+# ## Befragter ist stolz aufs Grundgesetz
+# allbus18.1$pn01 <- factor(allbus18.1$pn01, labels = c("Keine Aussage", "Stolz auf GG"))
+# ## Befragter ist stolz auf den Bundestag
+# allbus18.1$pn02 <- factor(allbus18.1$pn02, labels = c("Keine Aussage", "Stolz auf BT"))
+# ## Verbundenheit Befragter zu: Gemeinde
+# allbus18.1$pn12 <- factor(allbus18.1$pn12, labels = c("Stark verbunden", "Ziemlich verbunden",
+#                                                       "Wenig verbunden", "Gar nicht verbunden"))
+# #
+# #### allbus18.1$pn12 <- as.numeric(allbus18.1$pn12)
+# ## Verbundenheit Befragter zu: Gesamtdeutschland
+# allbus18.1$pn16 <- factor(allbus18.1$pn16, labels = c("Stark verbunden", "Ziemlich verbunden",
+#                                                       "Wenig verbunden", "Gar nicht verbunden"))
+# allbus18.1$pn16 <- relevel(allbus18.1$pn16, ref = "Stark verbunden")
+# #
+# #### allbus18.1$pn16 <- as.numeric(allbus18.1$pn16)
+# 
+# # Vertrauensvariablen im weitesten Sinne Nationalgefühl
+# ## Vertr. Befragter: BVerfG
+# allbus18.1$pt02 <- factor(allbus18.1$pt02, labels = c("Gar kein Vertrauen", "2", "3", "4", "5", "6", "Sehr großes Vertrauen"))
+# #
+# #### allbus18.1$pt02 <- as.numeric(allbus18.1$pt02)
+# ## Vertr. Befragter: Bundestag
+# allbus18.1$pt03 <- factor(allbus18.1$pt03, labels = c("Gar kein Vertrauen", "2", "3", "4", "5", "6", "Sehr großes Vertrauen"))
+# #
+# #### allbus18.1$pt03 <- as.numeric(allbus18.1$pt03)
+# ## Vertr. Befragter: Justiz
+# allbus18.1$pt08 <- factor(allbus18.1$pt08, labels = c("Gar kein Vertrauen", "2", "3", "4", "5", "6", "Sehr großes Vertrauen"))
+# #
+# #### allbus18.1$pt08 <- as.numeric(allbus18.1$pt08)
+# ## Vertr. Befragter: Fernsehen
+# allbus18.1$pt09 <- factor(allbus18.1$pt09, labels = c("Gar kein Vertrauen", "2", "3", "4", "5", "6", "Sehr großes Vertrauen"))
+# #
+# #### allbus18.1$pt09 <- as.numeric(allbus18.1$pt09)
+# ## Vertr. Befragter: Zeitungswesen
+# allbus18.1$pt12 <- factor(allbus18.1$pt12, labels = c("Gar kein Vertrauen", "2", "3", "4", "5", "6", "Sehr großes Vertrauen"))
+# #
+# #### allbus18.1$pt12 <- as.numeric(allbus18.1$pt12)
+# ## Vertr. Befragter: Hochschulen/Unis
+# allbus18.1$pt14 <- factor(allbus18.1$pt14, labels = c("Gar kein Vertrauen", "2", "3", "4", "5", "6", "Sehr großes Vertrauen"))
+# #
+# #### allbus18.1$pt14 <- as.numeric(allbus18.1$pt14)
+# ## Vertr. Befragter: Bundesregierung
+# allbus18.1$pt15 <- factor(allbus18.1$pt15, labels = c("Gar kein Vertrauen", "2", "3", "4", "5", "6", "Sehr großes Vertrauen"))
+# #
+# #### allbus18.1$pt15 <- as.numeric(allbus18.1$pt15)
+# ## Frage: In D. kann man gut leben
+# allbus18.1$pd11 <- factor(allbus18.1$pd11, labels = c("Stimme voll zu", "Stimme eher zu",
+#                                                       "Stimme eher nicht zu", "Stimme gar nicht zu"))
+# #
+# #### allbus18.1$pd11 <- as.numeric(allbus18.1$pd11)
+# ## Zufriedenheit mit Arbeit der Bundesregierung
+# allbus18.1$ps01 <- factor(allbus18.1$ps01, labels = c("Sehr zufrieden", "Zieml. zufrieden", "Etw. zufrieden",
+#                                                       "Etw. unzufrieden", "Zieml. unzufrieden", "Sehr unzufrieden"))
+# #
+# #### allbus18.1$ps01 <- as.numeric(allbus18.1$ps01)
+# 
+# ## Wahlverhalten Befragter
+# allbus18.1$pv03 <- factor(allbus18.1$pv03, labels = c("Ja", "Nein"))
+# 
+# ## Wichtigkeit von Sicherheit f. Befragten
+# allbus18.1$va01 <- factor(allbus18.1$va01, labels = c("Wichtigkeit"))
+# 
+# # numerics 
+# #### glm --> include; lrm --> not include:
+# allbus18.1$wghtpew <- as.numeric(allbus18.1$wghtpew)
+# allbus18.1$age <- as.numeric(allbus18.1$age)
+# allbus18.1$inc <- as.numeric(allbus18.1$inc)
+# allbus18.1$staatl <- as.numeric(allbus18.1$staatl)
+# allbus18.1$heimat <- as.numeric(allbus18.1$heimat)
+# 
+# # dummy von wahlabs
+# # subsetGross$wahlabs <- dummies::dummy(subsetGross$wahlabs)
 
-# Vertrauensvariablen im weitesten Sinne Nationalgefühl
-## Vertr. Befragter: BVerfG
-allbus18.1$pt02 <- factor(allbus18.1$pt02, labels = c("Gar kein Vertrauen", "2", "3", "4", "5", "6", "Sehr großes Vertrauen"))
-#
-#### allbus18.1$pt02 <- as.numeric(allbus18.1$pt02)
-## Vertr. Befragter: Bundestag
-allbus18.1$pt03 <- factor(allbus18.1$pt03, labels = c("Gar kein Vertrauen", "2", "3", "4", "5", "6", "Sehr großes Vertrauen"))
-#
-#### allbus18.1$pt03 <- as.numeric(allbus18.1$pt03)
-## Vertr. Befragter: Justiz
-allbus18.1$pt08 <- factor(allbus18.1$pt08, labels = c("Gar kein Vertrauen", "2", "3", "4", "5", "6", "Sehr großes Vertrauen"))
-#
-#### allbus18.1$pt08 <- as.numeric(allbus18.1$pt08)
-## Vertr. Befragter: Fernsehen
-allbus18.1$pt09 <- factor(allbus18.1$pt09, labels = c("Gar kein Vertrauen", "2", "3", "4", "5", "6", "Sehr großes Vertrauen"))
-#
-#### allbus18.1$pt09 <- as.numeric(allbus18.1$pt09)
-## Vertr. Befragter: Zeitungswesen
-allbus18.1$pt12 <- factor(allbus18.1$pt12, labels = c("Gar kein Vertrauen", "2", "3", "4", "5", "6", "Sehr großes Vertrauen"))
-#
-#### allbus18.1$pt12 <- as.numeric(allbus18.1$pt12)
-## Vertr. Befragter: Hochschulen/Unis
-allbus18.1$pt14 <- factor(allbus18.1$pt14, labels = c("Gar kein Vertrauen", "2", "3", "4", "5", "6", "Sehr großes Vertrauen"))
-#
-#### allbus18.1$pt14 <- as.numeric(allbus18.1$pt14)
-## Vertr. Befragter: Bundesregierung
-allbus18.1$pt15 <- factor(allbus18.1$pt15, labels = c("Gar kein Vertrauen", "2", "3", "4", "5", "6", "Sehr großes Vertrauen"))
-#
-#### allbus18.1$pt15 <- as.numeric(allbus18.1$pt15)
-## Frage: In D. kann man gut leben
-allbus18.1$pd11 <- factor(allbus18.1$pd11, labels = c("Stimme voll zu", "Stimme eher zu",
-                                                      "Stimme eher nicht zu", "Stimme gar nicht zu"))
-#
-#### allbus18.1$pd11 <- as.numeric(allbus18.1$pd11)
-## Zufriedenheit mit Arbeit der Bundesregierung
-allbus18.1$ps01 <- factor(allbus18.1$ps01, labels = c("Sehr zufrieden", "Zieml. zufrieden", "Etw. zufrieden",
-                                                      "Etw. unzufrieden", "Zieml. unzufrieden", "Sehr unzufrieden"))
-#
-#### allbus18.1$ps01 <- as.numeric(allbus18.1$ps01)
-
-## Wahlverhalten Befragter
-allbus18.1$pv03 <- factor(allbus18.1$pv03, labels = c("Ja", "Nein"))
-
-## Wichtigkeit von Sicherheit f. Befragten
-allbus18.1$va01 <- factor(allbus18.1$va01, labels = c("Wichtigkeit"))
-
-# numerics 
-#### glm --> include; lrm --> not include:
-allbus18.1$wghtpew <- as.numeric(allbus18.1$wghtpew)
-allbus18.1$age <- as.numeric(allbus18.1$age)
-allbus18.1$inc <- as.numeric(allbus18.1$inc)
-allbus18.1$staatl <- as.numeric(allbus18.1$staatl)
-allbus18.1$heimat <- as.numeric(allbus18.1$heimat)
-
-# dummy von wahlabs
-# subsetGross$wahlabs <- dummies::dummy(subsetGross$wahlabs)
+save(allbus18, file = "allbus18.RData")
 
 ###############################################
 
@@ -541,120 +542,120 @@ anova(endmodelGLM)
 
 
 
-# PCA
-## vorbereitung 1: eigenes subset, mutate: alles auf numeric
-subsetGrossPCA <- subsetGross
-subsetGrossPCA <- as_tibble(subsetGrossPCA)
-
-subsetGrossPCA <- subsetGrossPCA %>% mutate_if(is.double, as.numeric)
-subsetGrossPCA$wahlabs <- as.numeric(subsetGrossPCA$wahlabs)
-subsetGrossPCA$vertrStaat <- as.numeric(subsetGrossPCA$vertrStaat)
-subsetGrossPCA$vertrStaatKlein <- as.numeric(subsetGrossPCA$vertrStaatKlein)
-
-str(subsetGrossPCA)
-
-## vorbereitung 2: na.omit
-subsetGrossPCA <- na.omit(subsetGrossPCA)
-missmap(subsetGrossPCA)
-
-# Befehl pca
-pcaRiese <- prcomp(subsetGrossPCA[,c(1:58)], center = T, scale. = T)
-summary(pcaRiese)
-
-recipe(wahlabs ~ ., data = subsetGross) %>%
-  step_center(all_predictors()) %>%
-  step_scale(all_predictors())
-
-?step_scale
-
-
-# mit vertr index
-subsetKlein1 <- subset(allbus18, select = c("wahlabs", "eastwest", "sex", "age", "work", "educ", "inc", "mstat", "id02",
-                                           "pd11", "ps01", "va01", "pa12", "pa08a", "fn02", "pe09", "pv03", "pe13", "pa02a",
-                                           "pn01", "pn02", "pn12", "pn16", "vertrStaatKlein", "wghtpew"))
-subsetKlein1 <- as_tibble(subsetKlein1)
-
-## vars
-# genauere spezifizierung der vars inkl labels für subsetKlein
-# Persönliches zu Befragten
-subsetKlein1$eastwest <- factor(subsetKlein1$eastwest, labels = c("West", "Ost"))
-subsetKlein1$sex <- factor(subsetKlein1$sex, labels = c("Mann", "Frau"))
-subsetKlein1$educ <- factor(subsetKlein1$educ, labels = c("Ohne Abschluss", "Volks-/Mittelschule",
-                                                        "Mittl. Reife", "Fachhochschulreife",
-                                                        "Hochschulreife", "anderer Abschl.",
-                                                        "Noch Schüler"))
-subsetKlein1$work <- factor(subsetKlein1$work, labels = c("Ganztags", "Halbtags",
-                                                        "Nebenher berufstät.", "Nicht erwerbstät."))
-subsetKlein1$inc <- as.numeric(subsetKlein1$inc)
-subsetKlein1$mstat <- factor(subsetKlein1$mstat, labels = c("Verh., zsm.lebend", "Verh., getr. lebend",
-                                                          "Verwitwet", "Geschieden", "Ledig",
-                                                          "Lebensp., zsm.lebend", "Lebensp., getr. lebend"))
-subsetKlein1$id02 <- factor(subsetKlein1$id02, labels = c("Unterschicht", "Arbeiterschicht",
-                                                        "Mittelschicht", "Obere Mittelschicht",
-                                                        "Oberschicht"))
-
-# EINSTELLUNG BEFR. ZU VERSCH. THEMEN
-## Gleichgeschlechtliche Ehe verbieten
-subsetKlein1$pa12 <- factor(subsetKlein1$pa12, labels = c("Stimme voll zu", "Stimme eher zu", "Weder noch",
-                                                        "Stimme eher nicht zu", "Stimme gar nicht zu"))
-## Schwangerschaftsabbruch freistellen
-subsetKlein1$pa08a <- factor(subsetKlein1$pa08a, labels = c("Stimme voll zu", "Stimme eher zu", "Weder noch",
-                                                          "Stimme eher nicht zu", "Stimme gar nicht zu"))
-## Heirat bei dauerndem Zusammenleben
-subsetKlein1$fn02 <- factor(subsetKlein1$fn02, labels = c("Ja", "Nein", "Unentschieden"))
-## Wahlbeteiligung ist Bürgerpflicht
-subsetKlein1$pe09 <- factor(subsetKlein1$pe09, labels = c("Stimme voll zu", "Stimme eher zu",
-                                                        "Stimme eher nicht zu", "Stimme gar nicht zu"))
-## Man sollte sich regelmäßig über Politik informieren
-subsetKlein1$pe13 <- factor(subsetKlein1$pe13, labels = c("Stimme voll zu", "Stimme eher zu",
-                                                        "Stimme eher nicht zu", "Stimme gar nicht zu"))
-## Pol. Interesse Befragter (Ordinal)
-subsetKlein1$pa02a <- factor(subsetKlein1$pa02a, labels = c("Sehr stark", "Stark", "Mittel",
-                                                          "Wenig", "Ueberhaupt nicht"))
-## Befragter ist stolz aufs Grundgesetz
-subsetKlein1$pn01 <- factor(subsetKlein1$pn01, labels = c("Keine Aussage", "Stolz auf GG"))
-## Befragter ist stolz auf den Bundestag
-subsetKlein1$pn02 <- factor(subsetKlein1$pn02, labels = c("Keine Aussage", "Stolz auf BT"))
-## Verbundenheit Befragter zu: Gemeinde
-subsetKlein1$pn12 <- factor(subsetKlein1$pn12, labels = c("Stark verbunden", "Ziemlich verbunden",
-                                                        "Wenig verbunden", "Gar nicht verbunden"))
-## Verbundenheit Befragter zu: Gesamtdeutschland
-subsetKlein1$pn16 <- factor(subsetKlein1$pn16, labels = c("Stark verbunden", "Ziemlich verbunden",
-                                                        "Wenig verbunden", "Gar nicht verbunden"))
-
-## Frage: In D. kann man gut leben
-subsetKlein1$pd11 <- factor(subsetKlein1$pd11, labels = c("Stimme voll zu", "Stimme eher zu",
-                                                        "Stimme eher nicht zu", "Stimme gar nicht zu"))
-## Zufriedenheit mit Arbeit der Bundesregierung
-subsetKlein1$ps01 <- factor(subsetKlein1$ps01, labels = c("Sehr zufrieden", "Zieml. zufrieden", "Etw. zufrieden",
-                                                        "Etw. unzufrieden", "Zieml. unzufrieden", "Sehr unzufrieden"))
+# # PCA
+# ## vorbereitung 1: eigenes subset, mutate: alles auf numeric
+# subsetGrossPCA <- subsetGross
+# subsetGrossPCA <- as_tibble(subsetGrossPCA)
+# 
+# subsetGrossPCA <- subsetGrossPCA %>% mutate_if(is.double, as.numeric)
+# subsetGrossPCA$wahlabs <- as.numeric(subsetGrossPCA$wahlabs)
+# subsetGrossPCA$vertrStaat <- as.numeric(subsetGrossPCA$vertrStaat)
+# subsetGrossPCA$vertrStaatKlein <- as.numeric(subsetGrossPCA$vertrStaatKlein)
+# 
+# str(subsetGrossPCA)
+# 
+# ## vorbereitung 2: na.omit
+# subsetGrossPCA <- na.omit(subsetGrossPCA)
+# missmap(subsetGrossPCA)
+# 
+# # Befehl pca
+# pcaRiese <- prcomp(subsetGrossPCA[,c(1:58)], center = T, scale. = T)
+# summary(pcaRiese)
+# 
+# recipe(wahlabs ~ ., data = subsetGross) %>%
+#   step_center(all_predictors()) %>%
+#   step_scale(all_predictors())
+# 
+# ?step_scale
 
 
-## Wahlverhalten Befragter
-subsetKlein1$pv03 <- factor(subsetKlein1$pv03, labels = c("Ja", "Nein"))
-
-## Wichtigkeit von Sicherheit f. Befragten
-subsetKlein1$va01 <- factor(subsetKlein1$va01, labels = c("Wichtigkeit"))
-
-# numerics 
-subsetKlein1$wghtpew <- as.numeric(subsetKlein1$wghtpew)
-subsetKlein1$age <- as.numeric(subsetKlein1$age)
-subsetKlein1$inc <- as.numeric(subsetKlein1$inc)
-
-View(subsetKlein1)
-subsetKlein1 <- na.omit(subsetKlein1)
-
-## regression II
-
-# null1
-### --> für copypaste: nullmodel - totalmodel - stepAIC
-null1 <- glm(wahlabs~1, family = "binomial", data = subsetKlein1)
-summary(null1)
-#
-total1 <- glm(wahlabs~., family = "binomial", data = subsetKlein1)
-summary(null1)
-#
-stepAIC(null1, direction = "both", test = "Chisq", scope = list(upper = total1), data = subsetKlein1)
+# # mit vertr index
+# subsetKlein1 <- subset(allbus18, select = c("wahlabs", "eastwest", "sex", "age", "work", "educ", "inc", "mstat", "id02",
+#                                            "pd11", "ps01", "va01", "pa12", "pa08a", "fn02", "pe09", "pv03", "pe13", "pa02a",
+#                                            "pn01", "pn02", "pn12", "pn16", "vertrStaatKlein", "wghtpew"))
+# subsetKlein1 <- as_tibble(subsetKlein1)
+# 
+# ## vars
+# # genauere spezifizierung der vars inkl labels für subsetKlein
+# # Persönliches zu Befragten
+# subsetKlein1$eastwest <- factor(subsetKlein1$eastwest, labels = c("West", "Ost"))
+# subsetKlein1$sex <- factor(subsetKlein1$sex, labels = c("Mann", "Frau"))
+# subsetKlein1$educ <- factor(subsetKlein1$educ, labels = c("Ohne Abschluss", "Volks-/Mittelschule",
+#                                                         "Mittl. Reife", "Fachhochschulreife",
+#                                                         "Hochschulreife", "anderer Abschl.",
+#                                                         "Noch Schüler"))
+# subsetKlein1$work <- factor(subsetKlein1$work, labels = c("Ganztags", "Halbtags",
+#                                                         "Nebenher berufstät.", "Nicht erwerbstät."))
+# subsetKlein1$inc <- as.numeric(subsetKlein1$inc)
+# subsetKlein1$mstat <- factor(subsetKlein1$mstat, labels = c("Verh., zsm.lebend", "Verh., getr. lebend",
+#                                                           "Verwitwet", "Geschieden", "Ledig",
+#                                                           "Lebensp., zsm.lebend", "Lebensp., getr. lebend"))
+# subsetKlein1$id02 <- factor(subsetKlein1$id02, labels = c("Unterschicht", "Arbeiterschicht",
+#                                                         "Mittelschicht", "Obere Mittelschicht",
+#                                                         "Oberschicht"))
+# 
+# # EINSTELLUNG BEFR. ZU VERSCH. THEMEN
+# ## Gleichgeschlechtliche Ehe verbieten
+# subsetKlein1$pa12 <- factor(subsetKlein1$pa12, labels = c("Stimme voll zu", "Stimme eher zu", "Weder noch",
+#                                                         "Stimme eher nicht zu", "Stimme gar nicht zu"))
+# ## Schwangerschaftsabbruch freistellen
+# subsetKlein1$pa08a <- factor(subsetKlein1$pa08a, labels = c("Stimme voll zu", "Stimme eher zu", "Weder noch",
+#                                                           "Stimme eher nicht zu", "Stimme gar nicht zu"))
+# ## Heirat bei dauerndem Zusammenleben
+# subsetKlein1$fn02 <- factor(subsetKlein1$fn02, labels = c("Ja", "Nein", "Unentschieden"))
+# ## Wahlbeteiligung ist Bürgerpflicht
+# subsetKlein1$pe09 <- factor(subsetKlein1$pe09, labels = c("Stimme voll zu", "Stimme eher zu",
+#                                                         "Stimme eher nicht zu", "Stimme gar nicht zu"))
+# ## Man sollte sich regelmäßig über Politik informieren
+# subsetKlein1$pe13 <- factor(subsetKlein1$pe13, labels = c("Stimme voll zu", "Stimme eher zu",
+#                                                         "Stimme eher nicht zu", "Stimme gar nicht zu"))
+# ## Pol. Interesse Befragter (Ordinal)
+# subsetKlein1$pa02a <- factor(subsetKlein1$pa02a, labels = c("Sehr stark", "Stark", "Mittel",
+#                                                           "Wenig", "Ueberhaupt nicht"))
+# ## Befragter ist stolz aufs Grundgesetz
+# subsetKlein1$pn01 <- factor(subsetKlein1$pn01, labels = c("Keine Aussage", "Stolz auf GG"))
+# ## Befragter ist stolz auf den Bundestag
+# subsetKlein1$pn02 <- factor(subsetKlein1$pn02, labels = c("Keine Aussage", "Stolz auf BT"))
+# ## Verbundenheit Befragter zu: Gemeinde
+# subsetKlein1$pn12 <- factor(subsetKlein1$pn12, labels = c("Stark verbunden", "Ziemlich verbunden",
+#                                                         "Wenig verbunden", "Gar nicht verbunden"))
+# ## Verbundenheit Befragter zu: Gesamtdeutschland
+# subsetKlein1$pn16 <- factor(subsetKlein1$pn16, labels = c("Stark verbunden", "Ziemlich verbunden",
+#                                                         "Wenig verbunden", "Gar nicht verbunden"))
+# 
+# ## Frage: In D. kann man gut leben
+# subsetKlein1$pd11 <- factor(subsetKlein1$pd11, labels = c("Stimme voll zu", "Stimme eher zu",
+#                                                         "Stimme eher nicht zu", "Stimme gar nicht zu"))
+# ## Zufriedenheit mit Arbeit der Bundesregierung
+# subsetKlein1$ps01 <- factor(subsetKlein1$ps01, labels = c("Sehr zufrieden", "Zieml. zufrieden", "Etw. zufrieden",
+#                                                         "Etw. unzufrieden", "Zieml. unzufrieden", "Sehr unzufrieden"))
+# 
+# 
+# ## Wahlverhalten Befragter
+# subsetKlein1$pv03 <- factor(subsetKlein1$pv03, labels = c("Ja", "Nein"))
+# 
+# ## Wichtigkeit von Sicherheit f. Befragten
+# subsetKlein1$va01 <- factor(subsetKlein1$va01, labels = c("Wichtigkeit"))
+# 
+# # numerics 
+# subsetKlein1$wghtpew <- as.numeric(subsetKlein1$wghtpew)
+# subsetKlein1$age <- as.numeric(subsetKlein1$age)
+# subsetKlein1$inc <- as.numeric(subsetKlein1$inc)
+# 
+# View(subsetKlein1)
+# subsetKlein1 <- na.omit(subsetKlein1)
+# 
+# ## regression II
+# 
+# # null1
+# ### --> für copypaste: nullmodel - totalmodel - stepAIC
+# null1 <- glm(wahlabs~1, family = "binomial", data = subsetKlein1)
+# summary(null1)
+# #
+# total1 <- glm(wahlabs~., family = "binomial", data = subsetKlein1)
+# summary(null1)
+# #
+# stepAIC(null1, direction = "both", test = "Chisq", scope = list(upper = total1), data = subsetKlein1)
 
 
 
@@ -672,7 +673,7 @@ stepAIC(null1, direction = "both", test = "Chisq", scope = list(upper = total1),
 # summary(glm(wahlabs~., data = subsetKlein, family = "binomial", weights = subsetKlein$wghtpew))
 
 
-
+########################### END
 
 
 
