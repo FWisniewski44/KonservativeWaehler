@@ -282,18 +282,23 @@ Somit lässt sich anhand dessen jedoch folgender Kernsatz dieser Arbeit formulie
 _Die Wahrscheinlichkeit dafür, dass eine Person für eine konservative Partei stimmt, erhöht sich, je älter die Person ist, je wichtiger der Person der Wert Sicherheit ist, je höher ihre Heimatverbundenheit ist, je höher ihr Vertrauen in staatliche Institutionen ist und je weiter rechts sie sich selbst auf der Links-Rechts-Skala politisch einstuft._
 
 ### 3. Verbindung mit Theorien, inhaltliche Interpretation der Ergebnisse
+#### Aus aktueller konservativ-theoretischer Sicht (A. Rödder)
 Im Folgenden werden die Ergebnisse des Analyseteils noch in einen theoretischen Kontext gebracht, um diesen noch eine gewisse Relevanz beizumessen.
 
 So soll zunächst die andere Seite des Konservativen betrachtet werden. Wie wird beispielsweise auf die in der Regressionsanalyse aufgedeckten, für die Wähler wichtigen Werte von Seiten der Politik eingegangen? Hierzu lohnt ein Blick in das Buch "Konservativ 21.0 - Eine Agenda für Deutschland" des Historikers Andreas Rödder, der selbst CDU- und damit Unionsmitglied ist. In diesem versucht er, die Trennlinie zwischen konservativer und populistischer Politik theoretisch zu schärfen, indem er einzelne Kernbereiche dieser aufgreift und Handlungsoptionen für politisch konservative Parteien, Politiker aber auch generell politisch Interessierte aufzeigt.
 
 Gerade die Motive "Heimat", "Staatlichkeit" und auch "Sicherheit als Wert" sind darin oft aufgegriffene Motive. So spricht Rödder in seinem Buch beispielsweise von Heimat folgendermaßen: "Heimat ist, wo Menschen Gemeinsamkeit und Bindung erfahren, wo man eine gemeinsame Sprache spricht, wo man sich verstanden und gesehen weiß." Und weiter: "Beheimatung bedeutet, bewährte Institutionen zu respektieren und gesellschaftliche Verbindungen zu fördern". (Rödder, S. 124) Hier kann klar erkannt werden, dass auch in der Theorie des Konservatismus, welche sich seit Edmund Burke und weiteren Vordenkern selbstverständlich stetig in Entwicklung begriffen sieht, gerade Werte wie Heimat und die Verbundenheit zu dieser oder auch das Vertrauen in den Staat positiv herausgestellt werden.
 
-### 
+#### Aus wissenschaftlicher Sicht
+Doch auch aus wissenschaftlicher Sicht sollen die Analyseergebnisse näher betrachtet und eingeordnet werden. Zu diesem Zweck existieren in der Wahl- und Wählerforschung verschiedene unterschiedlich gut geeignete theoretische Ansätze. Da das Ziel dieser Arbeit jedoch eine Charakterisierung einer bestimmten Art von Wählerschaft war, nämlich der konservativen, soll sich zunächst und vor allem dem _soziologischen Ansatz_ der Wahlforschung gewidmet werden.
+Hierzu
+
+
+Auch kann die Wahlentscheidung mit dem _Rational-Choice-Ansatz_ betrachtet und untersucht werden. Vorliegende Arbeit erachtet diesen jedoch als zu absolut. Die Annahme, manche Menschen seien sogenannte "Nutzenmaximierer", d. h. sie würden also bei jeder zu treffenden Entscheidung, auch Wahlentscheidung, nur auf den eigenen Nutzen aus sein, lässt sich nur schwerlich auf die konservative Wählerschaft anwenden. Die Ergebnisse dieser Arbeit zeigen, dass ein klassischer Faktor der persönlichen Bereicherung wie z. B. das Einkommen keinen signifikanten Einfluss auf die Wahlentscheidung für oder gegen eine konservative Partei hat. Es wäre nach dem _Rational-Choice-Ansatz_ wohl auch zu erwarten gewesen, dass die Variable id02 zur persönlichen Schichteinstufung der Befragten einen signifikanten Einfluss hätte haben müssen - etwa, dass Befragte, die sich eher der Oberschicht zugehörig fühlten, auch eher konservative Wähler seien; sie würden nach diesem Ansatz ihren Nutzen maximieren und ihre Schichtzugehörigkeit stabilisieren wollen, wobei die Wahl einer konservativen Partei durchaus ein denkbarer Weg gewesen wäre, um die Rahmenbedingungen hierfür zu schaffen.
 
 
 # D. Schlussteil/Snythese/Verbesserungsvorschläge/whatever
-Zum Abschluss vorliegender Arbeit soll zunächst zusammenfassend nochmals auf die aufgestellten Hypothesen eingegangen werden - welche von diesen konnten am Ende angenommen werden, welche mussten nach der durchgeführten Regressionsanalyse verworfen werden?
-
+<!-- Anmerkung 1: Integration von Kap. 13 aus Falter/Schön zum Wertewandel vllt. passend -->
 
 ```{r effects for significant vars, echo=FALSE}
 plot(predictorEffects(mod = hypomod, predictors = c("age", "va01", "staatl", "heimat", "linksRechts")))
