@@ -74,13 +74,13 @@ library(rms)
 REMEMBER FOOTNOTES
 
 In Zeiten der andauernden, weltweiten wirtschaftlichen und gesellschaftlichen Krisensituation, welche durch das Coronavirus verursacht wurde, ist es nicht verwunderlich, dass viele Menschen sich nach der „Zeit davor“ sehnen: ein wahrgenommener Fortschritt in beinahe allen Bereichen des menschlichen Lebens, verbunden mit der Freiheit, tun zu können was man mochte und wann man dies wünschte. Seien es Reisen, oder aber auch Besuche bei Freunden und Verwandten, in Restaurants oder Bars zu essen und eine gute Zeit mit geliebten Menschen zu verbringen.
-Durch die virale Bedrohungssituation aber ist auch vielen Menschen (wieder) bewusst geworden, dass diese Form des Zusammenlebens, dieser hohe Grad an Freiheit weltweit auch einen hohen Preis haben kann; was im Umkehrschluss bei einigen Menschen das Bedürfnis nach mehr Sicherheit im Zusammenleben miteinander gestärkt hat. Am besten zu beobachten ist dies wohl daran, dass aktuell beinahe jeder Mensch in Deutschland wie selbstverständlich einen Mund-Nasen-Schutz trägt, sobald er ein Gebäude betritt – ein Bild, das für viele noch vor einem halben Jahr hierzulande unvorstellbar gewesen wäre, kennt man ein solches Verhalten doch meist eher aus dem asiatischen Raum.
+Durch die virale Bedrohungssituation aber ist auch vielen Menschen (wieder) bewusst geworden, dass diese Form des Zusammenlebens, dieser hohe Grad an Freiheit weltweit auch einen hohen Preis haben kann; was im Umkehrschluss bei einigen Menschen das Bedürfnis nach mehr Sicherheit im Zusammenleben miteinander gestärkt hat. Am besten zu beobachten ist dies wohl daran, dass aktuell beinahe jeder Mensch in Deutschland wie selbstverständlich einen Mund-Nasen-Schutz trägt, sobald er ein Gebäude betritt – ein Bild, das für viele noch vor einem halben Jahr hierzulande unvorstellbar gewesen wäre, kennt man ein solches doch meist eher aus dem asiatischen Raum.
 
 Doch nicht nur auf individueller oder gesellschaftlicher Ebene erwiesen sich das Coronavirus und die damit verbundenen Einschränkungen, die ein jeder Mensch auf sich nehmen musste, als höchst transformativ. Auch auf politischer Ebene war ein Wandel zu beobachten, den vor beziehungsweise ohne die Krise wohl selten jemand erwartet hätte: durch sie erlebten konservative Parteien überall in Europa einen Aufschwung bezüglich des Zuspruchs aus der wahlberechtigten Bevölkerung.
 Besonders die vor der Krise stark in die Kritik geratene Union aus CDU und CSU in Deutschland machte in ihren Umfragewerten den Anschein, als täte ihr die Krise ungemein gut. Vergleicht man deren Umfragewerte im Februar 2020, so wurde die Partei von 27% der Befragten als Antwort auf die Sonntagsfrage im ARD-DeutschlandTREND genannt  - als Vergleichswert dient nun der DeutschlandTREND vom Mai 2020: hier erhielt die Union starke 39%, befand sich gar auf einem so hohen Wert wie seit August 2017 nicht mehr. 
 Und auch einzelne, konservative Politiker gewannen durch ihr Krisenmanagement an Einfluss und Zuspruch: Markus Söder galt laut dem DeutschlandTREND für Mai 2020 als der bevorzugte Kanzlerkandidat der Union, was besonders auf dessen stark auf individuelle und gesellschaftliche Sicherheit ausgelegte Maßnahmen zur Eindämmung des Virus in Bayern zurückzuführen ist, welche bei der Bevölkerung offenbar als wirkungsvoll wahrgenommen wurden. 
 
-Doch wirft dieser neuerlich wahrzunehmende „Boom“ konservativer Politik aus wissenschaftlicher Perspektive auch Fragen auf. Das Motiv der Sicherheit, welches von konservativen Parteien immer wieder betont wird, wurde bereits angesprochen. Doch welche Eigenschaften haben konservative Wähler noch? Und welche dieser Eigenschaften beeinflussen sie am meisten bei der Wahlentscheidung für eine konservative Partei? Diesen Fragen soll diese Arbeit mit Hilfe einer Analyse des Datensatzes der Allgemeinen Bevölkerungsumfrage der Sozialwissenschaften von 2018 (nachfolgend ALLBUS 2018 genannt) auf den Grund gehen. Untersucht werden dabei diejenigen Personen, welche für die hypothetische Sonntagsfrage im Datensatz angegeben haben, dass sie für die Union stimmen würden.
+Doch wirft dieser zuletzt augenscheinlich wahrzunehmende „Boom konservativer Politik" aus wissenschaftlicher Perspektive auch Fragen auf. Das Motiv der Sicherheit, welches von konservativen Parteien immer wieder betont wird, wurde bereits angesprochen. Doch welche Eigenschaften haben konservative Wähler noch? Und welche dieser Eigenschaften beeinflussen sie am meisten bei der Wahlentscheidung für eine konservative Partei? Diesen Fragen soll diese Arbeit mit Hilfe einer Analyse des Datensatzes der Allgemeinen Bevölkerungsumfrage der Sozialwissenschaften von 2018 (nachfolgend ALLBUS 2018 genannt) auf den Grund gehen. Untersucht werden dabei diejenigen Personen, welche für die hypothetische Sonntagsfrage im Datensatz angegeben haben, dass sie für die Union stimmen würden.
 
 # B. Hauptteil I: Methodik, Hypothesen, Theorie
 
@@ -89,7 +89,7 @@ Zu Anfang dieser Arbeit wird ein kurzer Teil zur Einführung in die Thematik der
 ## 1. Definitionen/Klarstellungen
 
 Um sich nun zunächst von theoretischer Seite her dem Thema der konservativen Wähler zu nähern, muss zuerst festgelegt werden, welche Wähler diese Arbeit überhaupt als konservativ bezeichnet.
-Wie bereits in der Einleitung erwähnt wird sich bei der folgenden Analyse auf die Variable wahlabs als abhängige Variable konzentriert werden. Die Fragestellung dieser ist dem Codebuch des ALLBUS 2018 zu entnehmen und ist der Sonntagsfrage aus dem bekannten ARD-DeutschlandTREND sehr ähnlich: „Wenn am nächsten Sonntag Bundestagswahl wäre, welche Partei würden sie dann mit Ihrer ZWEITSTIMME wählen?“.
+Wie bereits in der Einleitung erwähnt wird sich bei der folgenden Analyse auf die Variable _wahl_ als abhängige Variable konzentriert werden. Die Fragestellung dieser ist dem Codebuch des ALLBUS 2018 zu entnehmen und ist der Sonntagsfrage aus dem bekannten ARD-DeutschlandTREND sehr ähnlich: „Wenn am nächsten Sonntag Bundestagswahl wäre, welche Partei würden sie dann mit Ihrer ZWEITSTIMME wählen?“.
 Diese Variable wurde nun für die Untersuchung dummycodiert, d. h. dichotomisiert. Kriterium war hierbei, die Wählerschaft in zwei Teile zu spalten: die Wähler, die für eine konservative Partei gestimmt haben auf der einen Seite, die restlichen auf der anderen. Dabei stand die oben bereits aufgeworfene Frage im Raum. Konkretisiert bedeutet diese nun: ist die AfD als selbst proklamierte „bürgerliche“ Partei auch eine konservative Partei, oder wird diese Arbeit nur die Unionsparteien CDU und CSU als potentielle politische Vertreter konservativer Wähler ansehen?
 
 Entschieden wurde sich dabei für letztere Variante. Dass die AfD nicht als konservative Partei angesehen wird, hat vielfältige Gründe, auf die nun nachfolgend in gebotener Kürze eingegangen werden soll.
@@ -102,10 +102,10 @@ Nähert man sich der Thematik der AfD nun auch noch von wissenschaftlich-analyti
 
 Da nun unter Punkt 1 schon auf Hintergrundüberlegungen theoretischer Natur in Bezug auf den Regressanden eingegangen wurde, soll sich nun auch von etwas praktischerer Seite der Variable _wahl_ genähert werden. Weiterhin wird kurz darauf eingegangen, warum sich bei der Wahl des Datensatzes für den ALLBUS 2018 entschieden wurde.
 
-Zunächst also erneut genauer zur Variable wahlabs. Zu diesem Zweck ist es praktisch, die absolute und relative Verteilung der Variable zu untersuchen.
+Zunächst also erneut genauer zur Variable _wahl_ Zu diesem Zweck ist es praktisch, die absolute und relative Verteilung der Variable zu untersuchen.
 
-```{r, echo=FALSE}
-(fre(allbus18$wahl, weight = allbus18$wghtpew))
+```{r univariat, echo=FALSE}
+tidy(summarytools::freq(allbus18$wahl, weights = allbus18$wghtpew))
 #
 ggplot(data = allbus18) +
   geom_bar(mapping = aes(x=wahl)) +
@@ -114,12 +114,12 @@ ggplot(data = allbus18) +
 
 Hier kann konstatiert werden, dass 799 Befragte angaben, dass sie für die Union stimmen würden (das entspricht 23% der Befragten), was in dem Fall vorliegender Arbeit gleichbedeutend ist mit der Wahlentscheidung für eine konservative Partei.
 
-Doch soll sich nicht nur auf die einzelnen Variablen im Modell sowie die abhängige Variable wahlabs bezogen werden, sondern es soll nun auch begründet werden, warum vorliegende Arbeit mit dem Datensatz ALLBUS 2018 arbeitet.
+Doch soll sich nicht nur auf die einzelnen Variablen im Modell sowie die abhängige Variable _wahl_ bezogen werden, sondern es soll nun auch begründet werden, warum vorliegende Arbeit mit dem Datensatz ALLBUS 2018 arbeitet.
 Da das Thema der Arbeit eine Charakterisierung konservativer Wähler sein wird, bot sich der ALLBUS 2018-Datensatz besonders deshalb für die Analyse an, da hier eine Vielzahl politischer, gesellschaftlicher und ökonomischer, aber auch mentalitätsbezogener Faktoren abgefragt werden. Somit konnte davon ausgegangen werden, dass sich mit dieser Datengrundlage ein umfassenderes Bild konservativer Wähler zeichnen ließe, als dies durch die Fokussierung auf nur einen dieser Themenbereiche durch Auswahl eines dementsprechenden Datensatzes möglich gewesen wäre.
 
 ## 3. Vorgehensweise und Hypothesengenerierung
 
-Bezüglich der Vorgehensweise bei der Datenanalyse wurde sich für die logistische Regression entschieden, da die abhängigen Variable wahlabs binär codiert ist, d. h. entweder die Observation tritt beim Befragten auf oder nicht.
+Bezüglich der Vorgehensweise bei der Datenanalyse wurde sich für die logistische Regression entschieden, da die abhängigen Variable _wahl_ binär codiert ist, d. h. entweder, die Observation, dass eine Person eine konservative Partei wählt, tritt beim Befragten auf oder nicht.
 Diese Art der Regression soll mit Hilfe der Statistiksoftware R durchgeführt werden. Hierzu wurde die Funktion „glm“ aus dem Package „stats“ auf eine Auswahl von unabhängigen Variablen angewendet, mit der abhängigen Variablen „wahlabs“.
 Wichtig ist es also für diese Arbeit noch, darzustellen, welche Variablen des ALLBUS 2018 in diese Auswahl einbezogen worden sind, um für diese Variablen Hypothesen zu generieren, die die Arbeit dann im Regressionsteil prüfen wird. Das Subset für die Regression beinhaltete folgende Variablen.
 
@@ -277,13 +277,15 @@ Hier ist ein statistisch signifikanter, positiver Zusammenhang zwischen der Link
 Der zugehörige Satz in natürlicher Sprache lautet in diesem Fall:
 _Je weiter rechts sich eine Person einordnet, desto höher ist deren Wahrscheinlichkeit, für eine konservative Partei zu stimmen._
 
-#### 2.6 Kurzes Zwischenfazit zur Regressionsanalyse
+#### 2.6 Zwischenfazit zur Regressionsanalyse
 Nachdem nun mittels der Regressionsanalyse in R aufgedeckt werden konnte, welche Variablen auch wirklich statistisch signifikante Einflussfaktoren auf die abhängige Variable sind, soll in einem kurzen Zwischenfazit vor der theoretischen Einordnung der Ergebnisse ein Kernsatz dieser Ergebnisse aufgestellt werden. Ebenso soll kurz konstatiert werden, welche Hypothesen angenommen werden und für welche H1 verworfen und H0 angenommen werden muss.
 
 Zunächst also wird die vorliegende Arbeit die Hypothesen H1b, H1f, H1g, H1h und H1i annehmen, da für die dahinter stehenden Variablen im Regressionsmodell statistische Signifikanz gegeben war. Hingegen müssen H1a, H1c, H1d, H1e und H1k aus dem gleichen Grund verworfen werden, da hier das Signifikanzniveau nicht erreicht wurde.
 
 Somit lässt sich anhand dessen jedoch folgender Kernsatz dieser Arbeit formulieren:
 _Die Wahrscheinlichkeit dafür, dass eine Person für eine konservative Partei stimmt, erhöht sich, je älter die Person ist, je wichtiger der Person der Wert Sicherheit ist, je höher ihre Heimatverbundenheit ist, je höher ihr Vertrauen in staatliche Institutionen ist und je weiter rechts sie sich selbst auf der Links-Rechts-Skala politisch einstuft._
+
+Hingegen haben der Wohnort im Osten oder Westen des Landes, das Geschlecht, das Einkommen, die subjektive Schichteinstufung und der Sinn für Bürgerpflichten keinen signifikanten Einfluss auf die abhängige Variable und damit auch keinen auf die Wahlentscheidung für oder gegen eine konservative Partei.
 
 ### 3. Verbindung mit Theorien, inhaltliche Interpretation der Ergebnisse
 #### 3.1 Aus aktueller konservativ-theoretischer Sicht (A. Rödder)
@@ -318,6 +320,7 @@ Weiterhin sollte auch darauf eingegangen werden, dass der sozialpsychologische A
 
 <!-- Doch auch _kandidatenorientiertes_ Wahlverhalten sollte beachtet werden. Zentrale Annahme dieser These ist es, dass Vertrauen in zwischenmenschlichen Beziehungen einen zentralen Stellenwert einnimmt - und damit auch als eine Art "Kompass" bei der Wahlentscheidung gebraucht werden kann. So können sich laut Schoen und Weins beispielsweise policybezogene Einstellungen von Kandidaten im Zeitverlauf ändern, deren Charakter und damit die Wirkung auf die Wählerschaft jedoch nicht derartig schnell. Außerdem ist anzumerken, dass im klassischen Ansatz bei Campbell et al. (1954, 1960) unter kandidatenorientierten Einstellungen jene verstanden werden, für die der Kandidat als individuelle Person steht, nicht aber als Vertreter seiner Partei - auch wenn sich dies nach Schoen und Weins in neuerer Forschung gewandelt hat und auch politische Positionen von Kandidaten mit in die Beurteilung durch den Wähler einfließen. (s. 293-295) -->
 
+#### 3.3 Zwischenfazit zur theoretischen Einordnung
 Somit kann abschließend zur theoretischen Einordnung der Regressionsanalyse gesagt werden, dass sich einige Merkmale, wie die additiven Indizes zum Vertrauen in die Staatlichkeit _staatl_ und zur Heimatverbundenheit _heimat_, aus der soziologischen Theorie zur Wahlforschung ergeben. Dies wird gestützt durch den mikrosoziologischen Ansatz der Columbia School, frei gedeutet nach dem Grundsatz aus Lazarsfelds Grundlagenarbeit (1944) zu diesem Analysemodell: "[...] a person thinks, politically, as he is, socially." (nach Schoen, S. 171) Weiterhin wurden Variablen wie die subjektive Einordnung der Befragten auf der Links-Rechts-Skala und die Wichtigkeit von Sicherheit für die Befragten nach dem sozialpsychologischen Ansatz interpretiert. Hierbei zeigte sich, dass im Fall des Bedürfnisses nach Sicherheit _va01_ von Seiten der Wähler eine Entscheidung issue- sowie zukunftsorientiert erfolgt. Im Falle der Links-Rechts-Selbsteinstufung wurde auf die Thematik der Parteiloyalitäten eingegangen. Vorliegender Arbeit erschien hier auch, wie oben bereits zu lesen, eine Kombination mit dem mikrosoziologischen Ansatz sinnvoll.
 
 # D. Schlussteil/Snythese/Verbesserungsvorschläge/whatever
@@ -329,17 +332,34 @@ Anmerkung 4: Schoen/Weins: man muss genauer untersuchen, welche Sachfragen ins G
 Anmerkung 5: Eigene Daten zu Corona erheben und diese auswerten, um bessere Beurteilung der Einleitung zu vollziehen
 Anmerkung 6: In Rückbezug zur Einleitung: Kandidatenorientierung der Wählerschaft durch Corona: Stärke Persönlichkeit vielleicht gewünscht, die durch Krise führt?
 -->
+Vorliegende Arbeit hatte es sich zum Ziel gesetzt, die Wählerschaft konservativer Parteien genauer zu analysieren und anhand einer Analyse eines sozialwissenschaftlichen Datensatzes zu charakterisieren. Anschließend wurden die Ergebnisse dieser Analyse in einen theoretischen Kontext gebracht, sowohl in Hinblick auf aktuelle Entwicklungen in der Theorie zum Konservatismus selbst, als auch in Bezug zu forschungsbezogenen Theorien. Die Modellgüte für das aufgestellte Regressionsmodell beträgt 0,159 (Nagelkerkes R2), was zwar für den Anfang in Ordnung ist, jedoch auf weiteres Forschungspotenzial hindeutet, um mehr als nur ca. 16% der Varianz zu erklären.
 
-```{r effects for significant vars, echo=FALSE}
-plot(predictorEffects(mod = hypomod, predictors = c("age", "va01", "staatl", "heimat", "linksRechts")))
+```{r, echo=FALSE, results='hide'}
+r2_nagelkerke(hypomod)
 ```
 
-Vorliegende Arbeit hatte es sich zum Ziel gesetzt, die Wählerschaft konservativer Parteien genauer zu analysieren und anhand einer Analyse eines sozialwissenschaftlichen Datensatzes zu charakterisieren. Anschließend wurden die Ergebnisse dieser Analyse in einen theoretischen Kontext gebracht, sowohl in Hinblick auf aktuelle Entwicklungen in der Theorie zum Konservatismus selbst, als auch in Bezug zu forschungsbezogenen Theorien.
-
 Aus dem Grund, dass sowohl nach der Analyse selbst, als auch nach dem theoretischen Teil der Arbeit bereits ein Fazit gezogen worden ist, sollen nun im Schluss dieser Arbeit Wege für die zukünftige Forschung auf diesem Gebiet besprochen werden.
-So ist hier als erstes beispielsweise ins Feld zu führen, dass es durchaus weitere Variablen gibt, von denen sich Erklärungspotential im Hinblick auf die konservative Wählerschaft versprochen werden kann.
+So ist hier als erstes beispielsweise ins Feld zu führen, dass es durchaus weitere Variablen gibt, von denen sich Erklärungspotential im Hinblick auf die konservative Wählerschaft versprochen werden kann. So zum Beispiel könnte das Thema der gesellschaftlichen Großgruppen im Sinne des Cleavage-Ansatzes der Wahlforschung nach S. Martin Lipset und Stein Rokkan (1967) untersucht werden, indem zum Beispiel die Mitgliedschaft in diesen erfasst wird. Dies wäre auch mit dem Datensatz des ALLBUS 2018 möglich: hier könnte beispielsweise die Mitgliedschaft in einer Gewerkschaft oder die Mitgliedschaft in gesellschaftlich wichtigen Vereinen, in Bürgerinitiativen oder in Sport- und Kulturvereinen mit in die Untersuchung einbezogen werden - ein Faktor, der gerade für Deutschland als stark durch Vereine und dergleichen geprägte Gesellschaft für zukünftige Untersuchungen interessant sein könnte.
+Denkbar wäre auch eine Untersuchung, welche sich stärker auf den sozialpsychologischen Wahlforschungsansatz stützt. Das issue-orientierte Wahlverhalten wurde unter Punkt 3.2 bereits angesprochen - hier sei beispielsweise für zukünftige Forschung vermerkt, dass eine genauere Spezifizierung der in Frage kommenden politischen Sachfragen, welche die Wähler für ihre Entscheidungsfindung heranziehen, vorgenommen werden könnte, wie dies auch Schoen und Weins in ihrem Artikel vorschlugen: "Sie [Defizite in der Analyse, F. W.] könnten dadurch vermindert werden, daß - trotz aller ökonomischen Zwänge - stärker darauf geachtet wird, das Universum potentiell relevanter Sachfragen möglichst umfassend abzubilden und darüber hinaus Parteibindungen und Kandidatenorientierungen als Kontrollgrößen zu berücksichtigen." (S. 293)
+
+Ein anderer Ansatz mit besonderem Bezug zur Aktualität wäre die Untersuchung der konservativen Wählerschaft anhand anderer Datengrundlage. Gerade in Zeiten der weltweiten Pandemie, verursacht durch das Coronavirus, wäre diese Alternative interessant. So könnten neue Variablen zur proaktiven Rolle des Staates und dessen Eingreifen in die Gesellschaft untersucht werden, aber es entstünde wohl in der Erhebung auch gleichzeitig ein Fokus auf ökonomische Implikationen der Pandemie und des damit verbundenen Shutdowns, den viele Länder durchgeführt haben.
+In einer solchen Untersuchung könnte dann auch ein stärker kandidatenorientierter Fokus gelegt werden, um eventuell über die reine Charakterisierung von konservativen Wählern hinauszugehen, und Fragen zu klären, die auch in der Einleitung zu dieser Arbeit impliziert worden sind. Beispielsweise könnte dann daran orientiert analysiert werden, werden, _warum_ gerade die Kandidaten konservativer Parteien, wie zum Beispiel Markus Söder von der CSU, in der Krisensituation von den Wählern derart positiv wahrgenommen worden sind und noch werden.
+
+Es steht also außer Frage, dass auch nach dieser Analyse noch nicht alles zum Thema der konservativen Wählerschaft gesagt worden ist - was auch logischerweise nicht der Anspruch der Arbeit gewesen sein kann. Gerade deshalb, weil es sich auch in der nahen Zukunft noch zeigen muss, ob der Aufschwung konservativer Parteien und Politiker nur ein kurzes Intermezzo zu Zeiten des Coronavirus war und ist, oder ob langfristig auch *nach* der Pandemie eine Konsolidierung dieser Tendenz zu beobachten sein wird.
 
 
+
+
+
+
+
+
+
+
+
+```{r effects for significant vars, echo=FALSE, results='hide'}
+plot(predictorEffects(mod = hypomod, predictors = c("age", "va01", "staatl", "heimat", "linksRechts")))
+```
 
 
 
